@@ -1,0 +1,995 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+vbSharp
+</name>
+</assembly>
+<members>
+<member name="M:vbSharp.conn.oledb.#ctor(System.String)">
+	<summary>
+	</summary>
+	<param name="strConnect"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.conn.oledb.OpenDB">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:vbSharp.conn.oledb.CloseDB">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:vbSharp.read.rss(System.String,System.String[],System.Int32)">
+	<summary>
+ RSS as datatable.
+ </summary>
+	<param name="url">The URL of the RSS feed.</param>
+	<param name="fields">The fields of the RSS field to include in the Satatable</param>
+	<param name="limit">Limits the number of returned records, 0=ALL</param><returns></returns>
+</member><member name="M:vbSharp.fs.read(System.String)">
+	<summary>
+	</summary>
+	<param name="filepath"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="F:vbSharp.fs.exists">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:vbSharp.read.excel(System.String,System.String)">
+	<summary>
+ Returns Datatable from Excel File based on jetSQL query
+ </summary>
+	<param name="sqlString">The SQL query.</param>
+	<param name="path">The path to the excel file.</param>
+	<returns>Datatable</returns>
+</member><member name="M:vbSharp.webform.button(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="text"></param>
+	<param name="cssClass"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.StateOptions(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="sel"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.CountryOptions(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="sel"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.MonthOptions(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="sel"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.StaticSelect(System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="name"></param>
+	<param name="vals"></param>
+	<param name="lbls"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.numDropdown(System.String,System.Int32,System.Int32)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="range"></param>
+	<param name="selectedindex"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.numSelect(System.Int32,System.Int32,System.String)">
+	<summary>
+	</summary>
+	<param name="startRange"></param>
+	<param name="endRange"></param>
+	<param name="sel"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.GroupDDL(System.Data.DataTable,System.String)">
+	<summary>
+	</summary>
+	<param name="recs"></param>
+	<param name="name"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.recDropdown(System.String,System.Data.DataTable,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="recs"></param>
+	<param name="SelectedValue"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.Textbox(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="txt"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.Password(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="txt"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.TextArea(System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="txt"></param>
+	<param name="rows"></param>
+	<param name="cols"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.recCheckBoxList(System.String,System.Data.DataTable,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="recs"></param>
+	<param name="SelectedValue"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.Checkbox(System.String,System.String,System.String,System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssClass"></param>
+	<param name="val"></param>
+	<param name="selected"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.webform.field(System.String,System.String,System.Int32,System.String,System.Int32,System.Int32,System.String,System.Data.DataTable,System.Data.DataTable,System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="val"></param>
+	<param name="inputType"></param>
+	<param name="cssClass"></param>
+	<param name="rows"></param>
+	<param name="cols"></param>
+	<param name="name"></param>
+	<param name="valRecs"></param>
+	<param name="valIDRecs"></param>
+	<param name="selected"></param>
+	<param name="checked"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.IsPrime(System.Int64)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.sieve(System.Int32)">
+	<summary>
+ Sieve of Eratosthenes
+ </summary>
+	<param name="limit"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.alphaPos(System.String)">
+	<summary>
+	</summary>
+	<param name="l"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.isPalindrome(System.Int32)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.isTriangle(System.Int64)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.factorial(System.Int64)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.factorialSum(System.Int64)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.addSquares(System.Int64)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.SumDivisibleBy(System.Int64,System.Int64)">
+	<summary>
+	</summary>
+	<param name="n"></param>
+	<param name="target"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.divisors(System.Int64)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.digitInteger(System.Int32)">
+	<summary>
+ list each integer in a number
+ </summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.listAdd(System.Collections.Generic.List{System.Int64},System.Int32)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<param name="max"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.Fibonacci(System.Int64)">
+	<summary>
+ Fibonacci to x
+ </summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.collatz(System.Int64)">
+	<summary>
+ Collatz Conjecture
+ </summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.binominal_coefficient(System.Int64,System.Int64)">
+	<summary>
+ binominal coefficient
+ </summary>
+	<param name="m"></param>
+	<param name="n"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.even(System.Int32)">
+	<summary>
+ even int
+ </summary>
+	<param name="val"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.even(System.Int64)">
+	<summary>
+ even long
+ </summary>
+	<param name="val"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.divBy(System.Int32,System.Int32)">
+	<summary>
+ mod ints
+ </summary>
+	<param name="val"></param>
+	<param name="div"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.divBy(System.Int64,System.Int64)">
+	<summary>
+ mod longs
+ </summary>
+	<param name="val"></param>
+	<param name="div"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.advMath.convertToWords(System.Int32)">
+	<summary>
+ convert number to words
+ </summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.executes.oledb(System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="strSQL"></param>
+	<param name="ExecuteScalar"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_HTML.toLink(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="str"></param>
+	<param name="href"></param>
+	<param name="cssClass"></param>
+	<param name="id"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.executes.sql(System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="strSQL"></param>
+	<param name="ExecuteScalar"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.dataObj.__(System.Object)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.dataObj.Execute(System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="strSQL"></param>
+	<param name="ExecuteScalar"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.dataObj.FillRecs(System.String)">
+	<summary>
+	</summary>
+	<param name="sqlString"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.dataObj.oExecute(System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="strSQL"></param>
+	<param name="ExecuteScalar"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.dataObj.oFillRecs(System.String)">
+	<summary>
+	</summary>
+	<param name="sqlString"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.dataObj.CleanSQL(System.String)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.dataObj.ColumnExists(System.Data.DataTable,System.String)">
+	<summary>
+	</summary>
+	<param name="recs"></param>
+	<param name="ColumnName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.edit.Delete(System.Int32,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="tbl"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.edit.sqlWriter(System.String,System.String[],System.String[],System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="tbl"></param>
+	<param name="tblFields"></param>
+	<param name="updateVals"></param>
+	<param name="strWhere"></param>
+	<param name="insert"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.images.watermark(System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="filename"></param>
+	<param name="str"></param>
+	<param name="saveAs"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.images.colorShift(System.String,System.Int32,System.String)">
+	<summary>
+	</summary>
+	<param name="filename"></param>
+	<param name="shiftTo"></param>
+	<param name="saveAs"></param>
+	<remarks></remarks>
+</member><member name="P:vbSharp.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:vbSharp.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:vbSharp.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:vbSharp.read.csv(System.String,System.Boolean)">
+	<summary>
+ Returns CSV as Datatable
+ </summary>
+	<param name="path">The path to the CSV.</param>
+	<param name="hasHeader">if set to <c>true</c> [has header].</param><returns></returns>
+</member><member name="M:vbSharp.read.xml(System.String,System.String,System.Int32,System.Boolean)">
+	<summary>
+ Returns xml from http source as datatable
+ </summary>
+	<param name="url">The URL.</param>
+	<param name="rootEl">The root el.</param>
+	<param name="limit">The limit.</param><returns></returns>
+</member><member name="M:vbSharp.read.xml(System.Xml.XmlDocument,System.String,System.Int32)">
+	<summary>
+ Returns xml from local or localized source as datatable
+ </summary>
+	<param name="xd">The XML Document.</param>
+	<param name="rootEl">The root element.</param>
+	<param name="limit">The limit.</param><returns></returns>
+</member><member name="M:vbSharp.commonhtml.td(System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="val"></param>
+	<param name="width"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonhtml.th(System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="val"></param>
+	<param name="width"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonhtml.toUL(System.String[],System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="x"></param>
+	<param name="ulid"></param>
+	<param name="ulclass"></param>
+	<param name="liclass"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonhtml.href(System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="url"></param>
+	<param name="lbl"></param>
+	<param name="style"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonhtml.imghref(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="url"></param>
+	<param name="src"></param>
+	<param name="cls"></param>
+	<param name="title"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonhtml.imghref(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="url"></param>
+	<param name="src"></param>
+	<param name="imagecls"></param>
+	<param name="aclass"></param>
+	<param name="title"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonhtml.tag(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="htag"></param>
+	<param name="content"></param>
+	<param name="style"></param>
+	<param name="id"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.forEach(System.Data.DataTable,System.Delegate,System.Delegate,System.Delegate)">
+	<summary>
+ forEach for data.datatable, Replace for... next
+ </summary>
+	<param name="recs"></param>
+	<param name="del"></param>
+	<param name="alt"></param>
+	<param name="callback"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.forEach(System.Data.DataRow,System.Delegate,System.Delegate,System.Delegate)">
+	<summary>
+ forEach for data.row
+ </summary>
+	<param name="row"></param>
+	<param name="del"></param>
+	<param name="alt"></param>
+	<param name="callback"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.range(System.Data.DataTable,System.Int32,System.Int32)">
+	<summary>
+ This is cheating for the end user who absolutely cant use ROW_NUMBER
+ </summary>
+	<param name="recs"></param>
+	<param name="first"></param>
+	<param name="last"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.toTable(System.Data.DataTable,System.String,System.String[])">
+	<summary>
+	</summary>
+	<param name="recs"></param>
+	<param name="cssclass"></param>
+	<param name="fields"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.toList(System.Data.DataTable,System.String,System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="recs"></param>
+	<param name="field"></param>
+	<param name="cssclass"></param>
+	<param name="ordered"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.toJS(System.Data.DataTable,System.String)">
+	<summary>
+ converts a datatable to javascript array
+ </summary>
+	<param name="recs"></param>
+	<param name="id"></param>
+	<returns>String</returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.toJSON(System.Data.DataTable,System.String)">
+	<summary>
+ convets datatable to JSON
+ </summary>
+	<param name="recs"></param>
+	<param name="id"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:vbSharp.Extensions_DataTable">
+	<summary>
+ Extends data.datatable
+ </summary>
+	<remarks></remarks>
+</member><member name="M:vbSharp.jq.tmpl(System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="markup"></param>
+	<param name="src"></param>
+	<param name="destination"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.jq.ajax(System.String,System.String,System.String[],System.String[],System.String)">
+	<summary>
+	</summary>
+	<param name="ajaxCall"></param>
+	<param name="url"></param>
+	<param name="vals"></param>
+	<param name="pars"></param>
+	<param name="redirect"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.jq.val(System.String)">
+	<summary>
+	</summary>
+	<param name="selector"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.jq.val(System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="selector"></param>
+	<param name="value"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.jq.isChecked(System.String)">
+	<summary>
+	</summary>
+	<param name="selector"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.jq.ready(System.String)">
+	<summary>
+	</summary>
+	<param name="code"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.jq.matchContent(System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="src"></param>
+	<param name="destination"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.pack.css(System.String)">
+	<summary>
+	</summary>
+	<param name="str"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.pack.StripCSSComments(System.String)">
+	<summary>
+	</summary>
+	<param name="str"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.pack.mergeCSS(System.String[])">
+	<summary>
+	</summary>
+	<param name="files"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.pack.mergeJS(System.String[])">
+	<summary>
+	</summary>
+	<param name="files"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonData.countries">
+	<summary>
+	</summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonData.usStates">
+	<summary>
+	</summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonData.months">
+	<summary>
+	</summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.usState.#ctor(System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="full"></param>
+	<param name="abbreviation"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.month.#ctor(System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="full"></param>
+	<param name="abbreviation"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.read.dir(System.String,System.String)">
+	<summary>
+ Reads Directory of files into Datatable
+ </summary>
+	<param name="path">The directory to read.</param>
+	<param name="fileExt">Limits results to specified file extension</param>
+	<returns>Datatable</returns>
+</member><member name="M:vbSharp.common.PG">
+	<summary>
+ A quick way to access httpcontext.content
+ </summary>
+	<returns>System.Web.HttpContext.Current</returns>
+	<remarks></remarks>
+</member><member name="T:vbSharp.common">
+	<summary>
+ Common Functionality
+ </summary>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_WebControl.rc(System.Web.UI.Control)">
+	<summary>
+ Returns webcontrol as string
+ </summary>
+	<param name="ctrl"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_WebControl.AppendControl(System.Web.UI.Control,System.Web.UI.Control)">
+	<summary>
+ appends one control to another
+ </summary>
+	<param name="x"></param>
+	<param name="y"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_WebControl.Addlit(System.Web.UI.Control,System.String)">
+	<summary>
+ Adds literal and literal text to control
+ </summary>
+	<param name="x"></param>
+	<param name="y"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_WebControl.AddCSS(System.Web.UI.Control,System.String)">
+	<summary>
+ adds CSS link to control
+ </summary>
+	<param name="x"></param>
+	<param name="y"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_WebControl.AddJS(System.Web.UI.Control,System.String)">
+	<summary>
+ add javascript link to control
+ </summary>
+	<param name="x"></param>
+	<param name="y"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.read.sql(System.String)">
+	<summary>
+ REturns Datatable from MS-SQL Server based on specified T-SQL query.
+ </summary>
+	<param name="sqlString">The SQL query.</param>
+	<returns>Datatable</returns>
+</member><member name="M:vbSharp.google.map(System.String)">
+	<summary>
+	</summary>
+	<param name="address"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.button(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="text"></param>
+	<param name="cssClass"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.StateOptions(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="sel"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.CountryOptions(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="sel"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.MonthOptions(System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="sel"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.StaticSelect(System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="name"></param>
+	<param name="vals"></param>
+	<param name="lbls"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.numDropdown(System.String,System.Int32,System.Int32)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="range"></param>
+	<param name="selectedindex"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.numSelect(System.Int32,System.Int32,System.String)">
+	<summary>
+	</summary>
+	<param name="startRange"></param>
+	<param name="endRange"></param>
+	<param name="sel"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.GroupDDL(System.Data.DataTable,System.String)">
+	<summary>
+	</summary>
+	<param name="recs"></param>
+	<param name="name"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.recDropdown(System.String,System.Data.DataTable,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="recs"></param>
+	<param name="SelectedValue"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.textbox(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.password(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.email(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.URL(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.search(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.tel(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.datetime(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.dateField(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.week(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.time(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.genInput(System.String,System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="type"></param>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="txt"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.TextArea(System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="txt"></param>
+	<param name="rows"></param>
+	<param name="cols"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.recCheckBoxList(System.String,System.Data.DataTable,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="recs"></param>
+	<param name="SelectedValue"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.Checkbox(System.String,System.String,System.String,System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssClass"></param>
+	<param name="val"></param>
+	<param name="selected"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.Radio(System.String,System.String,System.String,System.String,System.Boolean)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssClass"></param>
+	<param name="val"></param>
+	<param name="selected"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.field(System.String,System.String,System.Int32,System.String,System.Int32,System.Int32,System.String,System.Data.DataTable,System.Data.DataTable,System.String,System.Boolean,System.Boolean,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="val"></param>
+	<param name="inputType"></param>
+	<param name="cssClass"></param>
+	<param name="rows"></param>
+	<param name="cols"></param>
+	<param name="name"></param>
+	<param name="valRecs"></param>
+	<param name="valIDRecs"></param>
+	<param name="selected"></param>
+	<param name="checked"></param>
+	<param name="required"></param>
+	<param name="pattern"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.read.txt(System.String,System.String,System.String,System.Boolean)">
+	<summary>
+ REturns Datatable from specified Text file
+ </summary>
+	<param name="path">The path to the Text File.</param>
+	<param name="rowDelimiter">The specified row delimiter.</param>
+	<param name="colDelimiter">The specified column delimiter.</param>
+	<param name="hasHeader">if set to <c>true</c> Datatable Columns will reflect this, otherwise datatable columns will default to Column0... </param>
+	<returns>Datatable</returns>
+</member>
+</members>
+</doc>
