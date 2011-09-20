@@ -129,7 +129,6 @@
   Shared big_Class As Func(Of String, String, String) = Function(inner, cssclass) tag("big", inner, style:=cssclass)
   Shared blockquote_Class As Func(Of String, String, String) = Function(inner, cssclass) tag("blockquote", inner, style:=cssclass)
   Shared body_Class As Func(Of String, String, String) = Function(inner, cssclass) tag("body", inner, style:=cssclass)
-  Shared br_Class As Func(Of String, String, String) = Function(inner, cssclass) tag("br", inner, style:=cssclass)
   Shared button_Class As Func(Of String, String, String) = Function(inner, cssclass) tag("button", inner, style:=cssclass)
   Shared canvas_Class As Func(Of String, String, String) = Function(inner, cssclass) tag("canvas", inner, style:=cssclass)
   Shared caption_Class As Func(Of String, String, String) = Function(inner, cssclass) tag("caption", inner, style:=cssclass)
@@ -242,7 +241,6 @@
   Shared big_ID As Func(Of String, String, String) = Function(inner, id) tag("big", inner, id:=id)
   Shared blockquote_ID As Func(Of String, String, String) = Function(inner, id) tag("blockquote", inner, id:=id)
   Shared body_ID As Func(Of String, String, String) = Function(inner, id) tag("body", inner, id:=id)
-  Shared br_ID As Func(Of String, String, String) = Function(inner, id) tag("br", inner, id:=id)
   Shared button_ID As Func(Of String, String, String) = Function(inner, id) tag("button", inner, id:=id)
   Shared canvas_ID As Func(Of String, String, String) = Function(inner, id) tag("canvas", inner, id:=id)
   Shared caption_ID As Func(Of String, String, String) = Function(inner, id) tag("caption", inner, id:=id)
@@ -355,7 +353,6 @@
   Shared big_ID_Class As Func(Of String, String, String, String) = Function(inner, id, cssclass) tag("big", inner, id:=id, style:=cssclass)
   Shared blockquote_ID_Class As Func(Of String, String, String, String) = Function(inner, id, cssclass) tag("blockquote", inner, id:=id, style:=cssclass)
   Shared body_ID_Class As Func(Of String, String, String, String) = Function(inner, id, cssclass) tag("body", inner, id:=id, style:=cssclass)
-  Shared br_ID_Class As Func(Of String, String, String, String) = Function(inner, id, cssclass) tag("br", inner, id:=id, style:=cssclass)
   Shared button_ID_Class As Func(Of String, String, String, String) = Function(inner, id, cssclass) tag("button", inner, id:=id, style:=cssclass)
   Shared canvas_ID_Class As Func(Of String, String, String, String) = Function(inner, id, cssclass) tag("canvas", inner, id:=id, style:=cssclass)
   Shared caption_ID_Class As Func(Of String, String, String, String) = Function(inner, id, cssclass) tag("caption", inner, id:=id, style:=cssclass)
@@ -588,15 +585,10 @@
   Shared Function body(ByVal inner As String, ByVal id As String, ByVal cssclass As String) As String
     Return body_ID_Class(inner, id, cssclass)
   End Function
-  Shared Function br(ByVal inner As String) As String
-    Return br_Generic(inner)
+  Shared Function br() As String
+    Return "<br />"
   End Function
-  Shared Function br(ByVal inner As String, ByVal id As String) As String
-    Return br_ID(inner, id)
-  End Function
-  Shared Function br(ByVal inner As String, ByVal id As String, ByVal cssclass As String) As String
-    Return br_ID_Class(inner, id, cssclass)
-  End Function
+
   Shared Function button(ByVal inner As String) As String
     Return button_Generic(inner)
   End Function

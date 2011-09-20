@@ -26,6 +26,10 @@ vbSharp
 	<param name="url">The URL of the RSS feed.</param>
 	<param name="fields">The fields of the RSS field to include in the Satatable</param>
 	<param name="limit">Limits the number of returned records, 0=ALL</param><returns></returns>
+</member><member name="M:vbSharp.Extensions_Array.Slice``1(``0[],System.Int32,System.Int32)">
+	<summary>
+ A lot of cheating here applying List functionality to old school arrays
+ </summary>
 </member><member name="M:vbSharp.fs.read(System.String)">
 	<summary>
 	</summary>
