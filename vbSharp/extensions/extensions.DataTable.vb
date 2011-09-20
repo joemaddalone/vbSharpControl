@@ -60,7 +60,7 @@ Public Module Extensions_DataTable
       Else
         For i = 0 To recs.Rows.Count - 1
           q = If(i Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(i), i + 1)
+          q.DynamicInvoke(recs.Rows(i), i)
         Next
       End If
     End If
@@ -270,8 +270,27 @@ Public Module Extensions_DataTable
     Return "<script type=""text/javascript"">" & ret.ToString & "</script>"
   End Function
 
-
-
+  <Extension()> _
+  Public Function toCSV(ByVal recs As Data.DataTable) As String
+    Dim ret As New StringBuilder
+    If (recs.Columns.Count <> 0) Then
+      For Each col As Data.DataColumn In recs.Columns
+        ret.Append("[" & col.ColumnName & "],")
+      Next
+      ret.Append(vbCrLf)
+      For Each row As Data.DataRow In recs.Rows
+        For Each col As Data.DataColumn In recs.Columns
+          If col.DataType Is GetType(String) Then
+            ret.Append("""" & row(col).ToString() & """,")
+          Else
+            ret.Append(row(col).ToString() & ",")
+          End If
+        Next
+        ret.Append(vbCrLf)
+      Next
+    End If
+    Return ret.ToString()
+  End Function
 
 
 End Module
