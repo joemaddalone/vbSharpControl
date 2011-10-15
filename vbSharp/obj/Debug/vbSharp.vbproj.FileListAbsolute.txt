@@ -1,0 +1,9 @@
+C:\web\vbSharpControl\vbSharp\bin\Debug\vbSharp.dll
+C:\web\vbSharpControl\vbSharp\bin\Debug\vbSharp.pdb
+C:\web\vbSharpControl\vbSharp\bin\Debug\vbSharp.xml
+C:\web\vbSharpControl\vbSharp\obj\Debug\vbSharp.Resources.resources
+C:\web\vbSharpControl\vbSharp\obj\Debug\vbSharp.dll
+C:\web\vbSharpControl\vbSharp\obj\Debug\vbSharp.xml
+C:\web\vbSharpControl\vbSharp\obj\Debug\vbSharp.pdb
+C:\web\vbSharpControl\vbSharp\obj\Debug\vbSharp.vbprojResolveAssemblyReference.cache
+C:\web\vbSharpControl\vbSharp\obj\Debug\vbSharp.vbproj.GenerateResource.Cache

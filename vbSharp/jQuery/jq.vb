@@ -83,8 +83,14 @@ Public Class jq
   End Function
 
   Shared Function click(selector As String, action As String) As String
-    Return "$('" & selector & "').click(function(){" & action & "});"
+    Return jq.bindAction("click", selector, action)
   End Function
+
+  Shared Function submit(selector As String, action As String) As String
+    Return jq.bindAction("submit", selector, action)
+  End Function
+
+  Shared bindAction As Func(Of String, String, String, String) = Function(bind, selector, action) "$('" & selector & "')." & bind & "(function(){" & action & "});"
 
   ''' <summary>
   ''' 
