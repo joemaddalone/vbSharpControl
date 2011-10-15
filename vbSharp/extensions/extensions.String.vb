@@ -18,5 +18,15 @@ Public Module Extensions_String
     Array.ForEach(find, New Action(Of String)(Sub(str) ret = ret.Replace(str, "")))
     Return ret
   End Function
+
+  <Extension()> _
+  Public Function mReplace(src As String, find As String(), replacement As String()) As String
+    Dim ret As String = src
+    For i As Integer = 0 To find.Length
+      ret = ret.Replace(find(i), replacement(i))
+    Next
+    Return ret
+  End Function
+
 End Module
 
