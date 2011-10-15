@@ -74,6 +74,7 @@
     <Compile Include="executes\sql.vb" />
     <Compile Include="extensions\extensions.Array.vb" />
     <Compile Include="extensions\extensions.HTML.vb" />
+    <Compile Include="extensions\extensions.String.vb" />
     <Compile Include="javascript\jsmin.vb" />
     <Compile Include="javascript\json.vb" />
     <Compile Include="Unsorted\common.dataObj.vb" />

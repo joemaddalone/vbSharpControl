@@ -135,7 +135,15 @@ Public Module commonhtml
     Return "<" & htag & If(style <> "", " class=""" & style & """", "") & If(id <> "", " id=""" & id & """", "") & ">" & content & "</" & htag & ">"
   End Function
 
-
+  Function cols(ByVal columnstring As String()) As String
+    Dim ret As New StringBuilder
+    ret.Append("<colgroup>")
+    For Each col In columnstring
+      ret.Append("<col width=""" & col & """ />")
+    Next
+    ret.Append("</colgroup>")
+    Return ret.ToString
+  End Function
 
 
 

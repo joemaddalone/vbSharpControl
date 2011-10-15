@@ -1,6 +1,6 @@
 ﻿Option Strict On
 Imports System.Text.RegularExpressions
-'Not oringally written by Joe Maddalone -- no idea where it came from
+'Not originally written by Joe Maddalone -- no idea where it came from
 Public Class JSONObject
   Private Shared ReadOnly reProp As New Regex("(?<=(^|\,)\s*)([^\:]+)\s*\:\s*([^\,]+)", RegexOptions.Compiled)
   Private Shared ReadOnly reReplaced As New Regex("^\$\[\d+\]$", RegexOptions.Compiled)

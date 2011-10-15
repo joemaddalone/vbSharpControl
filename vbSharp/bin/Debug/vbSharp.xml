@@ -6,7 +6,12 @@ vbSharp
 </name>
 </assembly>
 <members>
-<member name="M:vbSharp.conn.oledb.#ctor(System.String)">
+<member name="T:vbSharp.Extensions_String">
+	<summary>
+ Extends string
+ </summary>
+	<remarks></remarks>
+</member><member name="M:vbSharp.conn.oledb.#ctor(System.String)">
 	<summary>
 	</summary>
 	<param name="strConnect"></param>
@@ -593,19 +598,6 @@ vbSharp
 	<param name="redirect"></param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:vbSharp.jq.val(System.String)">
-	<summary>
-	</summary>
-	<param name="selector"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:vbSharp.jq.val(System.String,System.String)">
-	<summary>
-	</summary>
-	<param name="selector"></param>
-	<param name="value"></param>
-	<returns></returns>
-	<remarks></remarks>
 </member><member name="M:vbSharp.jq.isChecked(System.String)">
 	<summary>
 	</summary>
@@ -725,6 +717,13 @@ vbSharp
 </member><member name="M:vbSharp.Extensions_WebControl.AddJS(System.Web.UI.Control,System.String)">
 	<summary>
  add javascript link to control
+ </summary>
+	<param name="x"></param>
+	<param name="y"></param>
+	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_WebControl.jScript(System.Web.UI.Control,System.String)">
+	<summary>
+ adds javascript to control
  </summary>
 	<param name="x"></param>
 	<param name="y"></param>

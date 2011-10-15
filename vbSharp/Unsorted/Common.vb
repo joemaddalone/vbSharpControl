@@ -26,14 +26,17 @@ Public Module common
     Function(s) System.Configuration.ConfigurationManager.AppSettings(s)
   Public Nav As Action(Of String) = Sub(url) PG.Response.Redirect(url)
   Public NavBack As Action = Sub() Nav(PG.Request.UrlReferrer.ToString)
-
   Public rW As Action(Of String) = Sub(s) PG.Response.Write(s)
   Public rCook As Func(Of String, String) = Function(s) PG.Response.Cookies(s).Value
   Public rSession As Action(Of String, String) = Sub(s, s2) PG.Session(s) = s2
-
   Public rqQ As Func(Of String, String) = Function(s) PG.Request.QueryString(s)
   Public rqF As Func(Of String, String) = Function(s) PG.Request.Form(s)
   Public rqCook As Func(Of String, String) = Function(s) PG.Request.Cookies(s).Value
+  Public Function timestamp() As String
+    Return Now.ToString.mReplace({":", "/", "-", " ", "."})
+  End Function
+
+
 
 
   Public Function isResponsive(ByVal url As String,

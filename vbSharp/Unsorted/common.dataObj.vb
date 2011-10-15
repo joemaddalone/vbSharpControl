@@ -112,12 +112,10 @@ Public Module dataObj
   ''' <returns></returns>
   ''' <remarks></remarks>
   Function CleanSQL(ByVal x As String) As String
-    If Not x Is Nothing And x <> "" Then
-      Return x.Replace("'", "''")
-    Else
-      Return ""
-    End If
+    Return __(x).Replace("'", "''")
   End Function
+
+  
 
   'Does a column exist?
   ''' <summary>

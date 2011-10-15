@@ -73,7 +73,6 @@ Public Module Extensions_WebControl
   ''' </summary>
   ''' <param name="x"></param>
   ''' <param name="y"></param>
-  ''' <returns></returns>
   ''' <remarks></remarks>
   <Extension()> _
   Sub jScript(ByVal x As Control, ByVal y As String)

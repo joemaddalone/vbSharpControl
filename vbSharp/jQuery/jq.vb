@@ -45,26 +45,23 @@ Public Class jq
     Return ret.ToString
   End Function
 
-  ''' <summary>
-  ''' 
-  ''' </summary>
-  ''' <param name="selector"></param>
-  ''' <returns></returns>
-  ''' <remarks></remarks>
+  
   Shared Function val(selector As String) As String
     Return "$('" & selector & "').val()"
   End Function
 
-  ''' <summary>
-  ''' 
-  ''' </summary>
-  ''' <param name="selector"></param>
-  ''' <param name="value"></param>
-  ''' <returns></returns>
-  ''' <remarks></remarks>
   Shared Function val(selector As String, value As String) As String
     Return "$('" & selector & "').val(" & value & ")"
   End Function
+
+  Shared Function html(selector As String) As String
+    Return "$('" & selector & "').html()"
+  End Function
+
+  Shared Function html(selector As String, value As String) As String
+    Return "$('" & selector & "').html(" & value & ")"
+  End Function
+
 
   ''' <summary>
   ''' 
@@ -77,6 +74,17 @@ Public Class jq
     Return "$('" & selector & "').is(':checked')"
   End Function
 
+  Shared Function checkVals(title As String) As String
+    Return "$('input[name=""" & title & """]:checked').map(function(){ return $(this).val(); }).get().join("","")"
+  End Function
+
+  Shared Function load(selector As String, src As String) As String
+    Return "$('" & selector & "').load('" & src & "');"
+  End Function
+
+  Shared Function click(selector As String, action As String) As String
+    Return "$('" & selector & "').click(function(){" & action & "});"
+  End Function
 
   ''' <summary>
   ''' 
@@ -136,6 +144,9 @@ Public Class jq
 
     Return ret.ToString
   End Function
+
+
+
 
   Public Class Accordion
     Implements ITemplate
