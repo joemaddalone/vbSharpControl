@@ -329,18 +329,18 @@
   Shared Function months() As List(Of month)
     Dim this As New List(Of month)
     With this
-      .Add(New month("January (01)", "01"))
-      .Add(New month("February (02)", "02"))
-      .Add(New month("March (03)", "03"))
-      .Add(New month("April (04)", "04"))
-      .Add(New month("May (05)", "05"))
-      .Add(New month("June (06)", "06"))
-      .Add(New month("July (07)", "07"))
-      .Add(New month("August (08)", "08"))
-      .Add(New month("September (09)", "09"))
-      .Add(New month("October (10)", "10"))
-      .Add(New month("November (11)", "11"))
-      .Add(New month("December(12)", "12"))
+      .Add(New month("January (01)", "01", "Jan"))
+      .Add(New month("February (02)", "02", "Feb"))
+      .Add(New month("March (03)", "03", "Mar"))
+      .Add(New month("April (04)", "04", "Apr"))
+      .Add(New month("May (05)", "05", "May"))
+      .Add(New month("June (06)", "06", "Jun"))
+      .Add(New month("July (07)", "07", "Jul"))
+      .Add(New month("August (08)", "08", "Aug"))
+      .Add(New month("September (09)", "09", "Sep"))
+      .Add(New month("October (10)", "10", "Oct"))
+      .Add(New month("November (11)", "11", "Nov"))
+      .Add(New month("December(12)", "12", "Dec"))
     End With
     Return this
   End Function
@@ -370,15 +370,17 @@ End Class
 Public Class month
   Property fullName As String
   Property abbreviatedName As String
+  Property abbreviatedTxt As String
   ''' <summary>
   ''' 
   ''' </summary>
   ''' <param name="full"></param>
   ''' <param name="abbreviation"></param>
   ''' <remarks></remarks>
-  Sub New(full As String, abbreviation As String)
+  Sub New(full As String, abbreviation As String, Optional txtabbreviation As String = "")
     fullName = full
     abbreviatedName = abbreviation
+    abbreviatedTxt = txtabbreviation
   End Sub
 End Class
 

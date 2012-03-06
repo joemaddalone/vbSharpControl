@@ -15,8 +15,12 @@ Public Class jq
   ''' <returns></returns>
   ''' <remarks></remarks>
   Shared Function tmpl(ByVal markup As String, ByVal src As String, ByVal destination As String) As String
-    Return "<script type=""text/javascript"">$.tmpl(""" & markup & """, " & src & ").appendTo(""" & destination & """);</script>"
+    Return "$.tmpl(""" & markup & """, " & src & ").appendTo(""" & destination & """);"
   End Function
+
+
+  
+
 
   ''' <summary>
   ''' 
@@ -47,21 +51,24 @@ Public Class jq
 
   
   Shared Function val(selector As String) As String
-    Return "$('" & selector & "').val()"
+    Return jq.sel(selector) & ".val()"
   End Function
 
   Shared Function val(selector As String, value As String) As String
-    Return "$('" & selector & "').val(" & value & ")"
+    Return jq.sel(selector) & ".val(" & value & ")"
+  End Function
+
+  Shared Function valEscape(selector As String) As String
+    Return "escape(" & jq.sel(selector) & ".val().replace( /\n/g, ''))"
   End Function
 
   Shared Function html(selector As String) As String
-    Return "$('" & selector & "').html()"
+    Return jq.sel(selector) & ".html()"
   End Function
 
   Shared Function html(selector As String, value As String) As String
-    Return "$('" & selector & "').html(" & value & ")"
+    Return jq.sel(selector) & ".html(" & value & ")"
   End Function
-
 
   ''' <summary>
   ''' 
@@ -71,7 +78,7 @@ Public Class jq
   ''' <remarks></remarks>
   Shared Function isChecked(selector As String) As String
     '$('#status').is(':checked')
-    Return "$('" & selector & "').is(':checked')"
+    Return jq.sel(selector) & ".is(':checked')"
   End Function
 
   Shared Function checkVals(title As String) As String
@@ -79,27 +86,68 @@ Public Class jq
   End Function
 
   Shared Function load(selector As String, src As String) As String
-    Return "$('" & selector & "').load('" & src & "');"
+    Return jq.sel(selector) & ".load('" & src & "');"
   End Function
 
-  Shared Function click(selector As String, action As String) As String
-    Return jq.bindAction("click", selector, action)
+  Shared Function click(selector As String, action As String, Optional live As Boolean = False) As String
+    If live Then
+      Return jq.liveAction("click", selector, action)
+    Else
+      Return jq.bindAction("click", selector, action)
+    End If
+
   End Function
 
-  Shared Function submit(selector As String, action As String) As String
+  Shared Function change(selector As String, action As String, Optional live As Boolean = False) As String
+    If live Then
+      Return jq.liveAction("change", selector, action)
+    Else
+      Return jq.bindAction("change", selector, action)
+    End If
+
+  End Function
+
+
+  Shared Function disable(selector As String) As String
+    Return jq.sel(selector) & ".attr('disabled','disabled');"
+  End Function
+
+  Shared Function hide(selector As String, Optional options As String = "") As String
+    Return jq.sel(selector) & ".hide(" & options & ");"
+  End Function
+  Shared Function show(selector As String, Optional options As String = "") As String
+    Return jq.sel(selector) & ".show(" & options & ");"
+  End Function
+
+  Shared Function append(selector As String, val As String) As String
+    Return jq.sel(selector) & ".append(" & val & ");"
+  End Function
+
+  Shared Function prepend(selector As String, val As String) As String
+    Return jq.sel(selector) & ".prepend(" & val & ");"
+  End Function
+
+
+  Shared Function sel(selector As String) As String
+    If selector(0) <> "'" Then
+      Return "$('" & selector & "')"
+    Else
+      Return "$(" & selector & ")"
+    End If
+
+  End Function
+
+
+  Shared Function submit(selector As String, action As String, Optional live As Boolean = False) As String
     Return jq.bindAction("submit", selector, action)
   End Function
 
-  Shared bindAction As Func(Of String, String, String, String) = Function(bind, selector, action) "$('" & selector & "')." & bind & "(function(){" & action & "});"
+  Shared bindAction As Func(Of String, String, String, String) = Function(bind, selector, action) "$('" & selector & "')." & bind & "(function(event){event.preventDefault();" & action & "});"
+  Shared liveAction As Func(Of String, String, String, String) = Function(bind, selector, action) "$('" & selector & "').live('" & bind & "',function(event){event.preventDefault();" & action & "});"
 
-  ''' <summary>
-  ''' 
-  ''' </summary>
-  ''' <param name="code"></param>
-  ''' <returns></returns>
-  ''' <remarks></remarks>
+
   Shared Function ready(code As String) As String
-    Return "$(document).ready(function () {" & code & "});"
+    Return "$(function () {" & code & "});"
   End Function
 
   ''' <summary>
@@ -110,7 +158,7 @@ Public Class jq
   ''' <returns></returns>
   ''' <remarks></remarks>
   Shared Function matchContent(src As String, destination As String) As String
-    Return "$('" & src & "').keyup(function(){$('" & destination & "').html($('" & src & "').val());"
+    Return jq.sel(src) & ".keyup(function(){" & jq.sel(destination) & ".html($('" & src & "').val());"
   End Function
 
   Shared Function MakeTabs(ByVal title As String, Optional ByVal css As String = "") As String

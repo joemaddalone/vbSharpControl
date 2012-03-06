@@ -68,6 +68,24 @@ Public Module Extensions_DataTable
   End Sub
 
   ''' <summary>
+  ''' isLast for data.row
+  ''' </summary>
+  ''' <param name="row"></param>
+  ''' <param name="index"></param>
+  ''' <remarks></remarks>
+  <Extension()> _
+  Public Function isLast(ByVal row As Data.DataRow, index As Integer) As Boolean
+    Dim cnt As Integer = row.Table.Rows.Count - 1
+    If index = cnt Then
+      Return True
+    Else
+      Return False
+    End If
+  End Function
+
+
+
+  ''' <summary>
   ''' forEach for data.row
   ''' </summary>
   ''' <param name="row"></param>
@@ -90,6 +108,16 @@ Public Module Extensions_DataTable
     Next
     If Not callback Is Nothing Then callback.DynamicInvoke()
   End Sub
+
+
+
+  <Extension()> _
+  Public Function mFields(ByVal row As Data.DataRow, fields As String(), Optional sep As String = " ") As String
+    Dim ret As New StringBuilder
+    Array.ForEach(fields, New Action(Of String)(Sub(str) ret.Append(__(row(str)) & sep)))
+    Return ret.ToString
+  End Function
+
 
   ''' <summary>
   ''' This is cheating for the end user who absolutely cant use ROW_NUMBER
@@ -225,7 +253,7 @@ Public Module Extensions_DataTable
                                  End Sub)
                    End Sub)
     End With
-    Return "<script type=""text/javascript"">" & ret.ToString & "</script>"
+    Return ret.ToString
   End Function
 
   ''' <summary>
@@ -263,11 +291,11 @@ Public Module Extensions_DataTable
                                    .Append("""" & PG.Server.HtmlEncode(dat.Replace(Chr(10), " ").Replace(Chr(13), " ").Replace(Chr(10) & Chr(13), " ")) & """")
                                    If x < cols Then .Append(",")
                                  End Sub)
-                     .Append(If(i < rows + 1, "),", ")"))
+                     .Append(If(i < rows, "),", ")"))
                    End Sub)
       .Append("]};")
     End With
-    Return "<script type=""text/javascript"">" & ret.ToString & "</script>"
+    Return ret.ToString
   End Function
 
   <Extension()> _

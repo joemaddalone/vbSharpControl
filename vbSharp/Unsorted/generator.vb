@@ -1,11 +1,12 @@
-﻿Class RandomStringGenerator
+﻿
+Public Class RandomStringGenerator
   Property ret As String = ""
   Sub New(x As Integer)
     ret = ""
     ret = go(x)
 
   End Sub
-  Function go(ByVal intLen As Integer) As String
+  Public Function go(ByVal intLen As Integer) As String
     Dim rRandom As New Random(GetNewSeed)
     rRandom.Next()
 
@@ -31,7 +32,7 @@
     Return strTemp
   End Function
 
-  Function GetNewSeed() As Integer
+  Private Function GetNewSeed() As Integer
     Dim arrBytes As Byte() = Guid.NewGuid().ToByteArray()  '16 bytes
     Dim seedNum As Integer = 0
     ' Boil GUID down 4 bytes at a time (size of int) and merge into Integer value

@@ -75,8 +75,11 @@
     <Compile Include="extensions\extensions.Array.vb" />
     <Compile Include="extensions\extensions.HTML.vb" />
     <Compile Include="extensions\extensions.String.vb" />
+    <Compile Include="javascript\javascript.vb" />
     <Compile Include="javascript\jsmin.vb" />
     <Compile Include="javascript\json.vb" />
+    <Compile Include="reads\read.url.vb" />
+    <Compile Include="swfobject\swf.vb" />
     <Compile Include="Unsorted\common.dataObj.vb" />
     <Compile Include="Unsorted\Common.vb" />
     <Compile Include="commonData\common.data.vb" />
@@ -114,7 +117,6 @@
     <Compile Include="reads\read.csv.vb" />
     <Compile Include="reads\read.dir.vb" />
     <Compile Include="reads\read.excel.vb" />
-    <Compile Include="reads\read.rss.vb" />
     <Compile Include="reads\read.sql.vb" />
     <Compile Include="reads\read.txt.vb" />
     <Compile Include="reads\read.xml.vb" />

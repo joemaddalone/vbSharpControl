@@ -1310,6 +1310,18 @@
   Shared Function tbody(ByVal inner As String, ByVal id As String, ByVal cssclass As String) As String
     Return tbody_ID_Class(inner, id, cssclass)
   End Function
+
+  Shared Function td(ByVal inner As String) As String
+    Return td_Generic(inner)
+  End Function
+  Shared Function td(ByVal inner As String, ByVal id As String) As String
+    Return td_ID(inner, id)
+  End Function
+  Shared Function td(ByVal inner As String, ByVal id As String, ByVal cssclass As String) As String
+    Return td_ID_Class(inner, id, cssclass)
+  End Function
+
+
   Shared Function textarea(ByVal inner As String) As String
     Return textarea_Generic(inner)
   End Function

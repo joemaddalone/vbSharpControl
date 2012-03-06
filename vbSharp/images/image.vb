@@ -2,6 +2,7 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.IO
+Imports System.Drawing.Imaging
 
 
 
@@ -106,7 +107,62 @@ Public Class images
 
   End Sub
 
+  Public Shared Sub resize(
+                     ByVal strFileName As String, _
+                     ByVal destination As String, _
+                     ByVal w As Integer, _
+                     ByVal h As Integer)
+    ' example data
+    'w=250
+    'h=250
 
+    'actual image
+    'w=310
+    'h=207
+
+
+    'Create a new Bitmap Image loading from location of original file
+    Dim bm As Bitmap = CType(System.Drawing.Image.FromFile(strFileName), Bitmap)
+
+    'Declare Thumbnails new Height and new Width
+    Dim newHeight As Integer = CInt((w / bm.Width) * bm.Height)
+    '(250/310)*207=166
+    Dim newWidth As Integer = CInt((newHeight / bm.Height) * bm.Width)
+    '(166/207)*310=248
+    'Create the new image as a blank bitmap
+    Dim resized As Bitmap = New Bitmap(w, h)
+    '250,250
+    'Create a new graphics object sized to the wxh requested
+    Dim g As Graphics = Graphics.FromImage(resized)
+
+    'White background
+    g.FillRectangle(Brushes.White, 0, 0, w, h)
+    'filled in white for 250x250
+    'Calculate where to start our new image
+    Dim top As Integer = CInt((h - newHeight) / 2)
+    '(250-166)/2=42
+
+    Dim left As Integer = CInt((w - newWidth) / 2)
+    '(250-248)=1
+
+
+    'Resize graphics object to fit onto the resized image
+    g.DrawImage(bm, New Rectangle(left, top, newWidth, newHeight), 0, 0, bm.Width, bm.Height, GraphicsUnit.Pixel)
+
+    'Create new path and filename for the resized image
+    Dim newStrFileName As String = destination
+
+    'Save the new image to the same folder as the original
+    Try
+      resized.Save(newStrFileName, ImageFormat.Jpeg)
+    Catch ex As Exception
+      'nothing
+    End Try
+    g.Dispose()
+    resized.Dispose()
+    bm.Dispose()
+
+  End Sub
 
 
 End Class

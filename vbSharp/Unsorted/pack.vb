@@ -22,6 +22,9 @@ Public Class pack
     str = str.Replace(", ", ",")
     str = str.Replace("; ", ";")
     str = str.Replace(";}", "}")
+    str = Regex.Replace(str, "\n", [String].Empty)
+    str = Regex.Replace(str, "\n\r", [String].Empty)
+    str = Regex.Replace(str, "\r", [String].Empty)
     str = Regex.Replace(str, "/\*[^\*]*\*+([^/\*]*\*+)*/", "$1")
     str = Regex.Replace(str, "(?<=[>])\s{2,}(?=[<])|(?<=[>])\s{2,}(?=&nbsp;)|(?<=&ndsp;)\s{2,}(?=[<])", [String].Empty)
     Return str

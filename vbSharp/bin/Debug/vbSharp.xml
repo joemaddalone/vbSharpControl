@@ -24,13 +24,6 @@ vbSharp
 	<summary>
 	</summary>
 	<remarks></remarks>
-</member><member name="M:vbSharp.read.rss(System.String,System.String[],System.Int32)">
-	<summary>
- RSS as datatable.
- </summary>
-	<param name="url">The URL of the RSS feed.</param>
-	<param name="fields">The fields of the RSS field to include in the Satatable</param>
-	<param name="limit">Limits the number of returned records, 0=ALL</param><returns></returns>
 </member><member name="M:vbSharp.Extensions_Array.Slice``1(``0[],System.Int32,System.Int32)">
 	<summary>
  A lot of cheating here applying List functionality to old school arrays
@@ -524,6 +517,13 @@ vbSharp
 	<param name="alt"></param>
 	<param name="callback"></param>
 	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.isLast(System.Data.DataRow,System.Int32)">
+	<summary>
+ isLast for data.row
+ </summary>
+	<param name="row"></param>
+	<param name="index"></param>
+	<remarks></remarks>
 </member><member name="M:vbSharp.Extensions_DataTable.forEach(System.Data.DataRow,System.Delegate,System.Delegate,System.Delegate)">
 	<summary>
  forEach for data.row
@@ -604,12 +604,6 @@ vbSharp
 	<param name="selector"></param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:vbSharp.jq.ready(System.String)">
-	<summary>
-	</summary>
-	<param name="code"></param>
-	<returns></returns>
-	<remarks></remarks>
 </member><member name="M:vbSharp.jq.matchContent(System.String,System.String)">
 	<summary>
 	</summary>
@@ -662,7 +656,7 @@ vbSharp
 	<param name="full"></param>
 	<param name="abbreviation"></param>
 	<remarks></remarks>
-</member><member name="M:vbSharp.month.#ctor(System.String,System.String)">
+</member><member name="M:vbSharp.month.#ctor(System.String,System.String,System.String)">
 	<summary>
 	</summary>
 	<param name="full"></param>
