@@ -49,6 +49,10 @@ Public Class jq
     Return ret.ToString
   End Function
 
+  Shared Function getJSON(url As String, success As String) As String
+    Return "$.getJSON('" & url & "', function(data) {" & success & "});"
+  End Function
+
   
   Shared Function val(selector As String) As String
     Return jq.sel(selector) & ".val()"
