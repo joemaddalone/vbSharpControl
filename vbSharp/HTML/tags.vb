@@ -1321,6 +1321,17 @@
     Return td_ID_Class(inner, id, cssclass)
   End Function
 
+  Shared Function th(ByVal inner As String) As String
+    Return th_Generic(inner)
+  End Function
+  Shared Function th(ByVal inner As String, ByVal id As String) As String
+    Return th_ID(inner, id)
+  End Function
+  Shared Function th(ByVal inner As String, ByVal id As String, ByVal cssclass As String) As String
+    Return th_ID_Class(inner, id, cssclass)
+  End Function
+
+
 
   Shared Function textarea(ByVal inner As String) As String
     Return textarea_Generic(inner)
