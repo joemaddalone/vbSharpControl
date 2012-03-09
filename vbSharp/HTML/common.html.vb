@@ -19,13 +19,13 @@ Public Module commonhtml
   Function td(ByVal val As String, Optional ByVal width As String = "") As String
     If val <> "" Then
       If width = "" Then
-        Return "<td>" & val & "</td>"
+        Return html.td(val)
       Else
         Return "<td width=""" & width & """>" & val & "</td>"
       End If
     Else
       If width = "" Then
-        Return "<td>&nbsp;</td>"
+        Return html.td("&nbsp;")
       Else
         Return "<td width=""" & width & """>&nbsp;</td>"
       End If
@@ -43,13 +43,13 @@ Public Module commonhtml
   Function th(ByVal val As String, Optional ByVal width As String = "") As String
     If val <> "" Then
       If width = "" Then
-        Return "<th>" & val & "</th>"
+        Return html.th(val)
       Else
         Return "<th width=""" & width & """>" & val & "</th>"
       End If
     Else
       If width = "" Then
-        Return "<th>&nbsp;</th>"
+        Return html.th("&nbsp;")
       Else
         Return "<th width=""" & width & """>&nbsp;</th>"
       End If
@@ -87,11 +87,11 @@ Public Module commonhtml
   ''' <param name="style"></param>
   ''' <returns></returns>
   ''' <remarks></remarks>
-  Function href(ByVal url As String, ByVal lbl As String, Optional ByVal style As String = "") As String
-    If style = "" Then
-      Return "<a href=""" & url & """>" & lbl & "</a>"
+  Function href(ByVal url As String, ByVal lbl As String, Optional ByVal cssClass As String = "") As String
+    If cssClass = "" Then
+      Return href(url, lbl)
     Else
-      Return "<a href=""" & url & """ class=""" & style & """>" & lbl & "</a>"
+      Return href(url, lbl, cssClass)
     End If
   End Function
 
@@ -105,7 +105,7 @@ Public Module commonhtml
   ''' <returns></returns>
   ''' <remarks></remarks>
   Function imghref(ByVal url As String, ByVal src As String, ByVal cls As String, Optional ByVal title As String = "") As String
-    Return "<a href=""" & url & """><img src=""" & src & """ class=""" & cls & """ title=""" & title & """></a>"
+    Return href(url, "<img src=""" & src & """ class=""" & cls & """ title=""" & title & """>")
   End Function
 
   ''' <summary>
@@ -119,7 +119,8 @@ Public Module commonhtml
   ''' <returns></returns>
   ''' <remarks></remarks>
   Function imghref(ByVal url As String, ByVal src As String, ByVal imagecls As String, ByVal aclass As String, ByVal title As String) As String
-    Return "<a href=""" & url & """ class=""" & aclass & """><img src=""" & src & """ class=""" & imagecls & """ title=""" & title & """></a>"
+    'Return "<a href=""" & url & """ class=""" & aclass & """><img src=""" & src & """ class=""" & imagecls & """ title=""" & title & """></a>"
+    Return href(url, "<img src=""" & src & """ class=""" & imagecls & """ title=""" & title & """>", aclass)
   End Function
 
   ''' <summary>
@@ -142,15 +143,19 @@ Public Module commonhtml
       ret.Append("<col width=""" & col & """ />")
     Next
     ret.Append("</colgroup>")
+
     Return ret.ToString
   End Function
 
 
 
-  Public PresentContent As Func(Of String, String) = Function(str) If(str.IndexOf(">") > 0, AddBreaks(str), str)
-  Public AddBreaks As Func(Of String, String) = Function(str) str.Replace(Chr(13) & Chr(10), "<br />")
-  Public RemoveHTML As Func(Of String, String) = Function(str) Regex.Replace(__(str), "<(.|\n)*?>", "")
-  Public truncateSummary As Func(Of String, Integer, String) = Function(str, l) If(str.Length > l, str.Substring(0, l) & "...", str)
+
+
+
+  Public PresentContent As Func(Of String, String) = Function(str) If(Str.IndexOf(">") > 0, AddBreaks(Str), Str)
+  Public AddBreaks As Func(Of String, String) = Function(str) Str.Replace(Chr(13) & Chr(10), "<br />")
+  Public RemoveHTML As Func(Of String, String) = Function(str) Regex.Replace(__(Str), "<(.|\n)*?>", "")
+  Public truncateSummary As Func(Of String, Integer, String) = Function(str, l) If(Str.Length > l, Str.Substring(0, l) & "...", Str)
   Public link As Func(Of String, String, String) = Function(url, lbl) href(url, lbl)
 
 
