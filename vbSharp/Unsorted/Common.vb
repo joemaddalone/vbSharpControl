@@ -35,9 +35,8 @@ Public Module common
   Public Function timestamp() As String
     Return Now.ToString.mReplace({":", "/", "-", " ", "."})
   End Function
-
-
-
+  
+  
 
   Public Function isResponsive(ByVal url As String,
                                Optional ByVal timed As Integer = 0) As Boolean
