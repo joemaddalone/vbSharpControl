@@ -89,11 +89,34 @@ Public Module commonhtml
   ''' <remarks></remarks>
   Function href(ByVal url As String, ByVal lbl As String, Optional ByVal cssClass As String = "") As String
     If cssClass = "" Then
-      Return href(url, lbl)
+      Return "<a href=""" & url & """>" & lbl & "</a>"
     Else
-      Return href(url, lbl, cssClass)
+      Return "<a href=""" & url & """ class=""" & cssClass & """>" & lbl & "</a>"
     End If
   End Function
+
+
+
+  Function el(type As String, ByVal inner As String, attributes As String(), attributevalues As String()) As String
+    Dim selfClose() As String = {"img", "br", "input", "hr"}
+    Dim ret As New StringBuilder
+    With ret
+      .Append("<" + type)
+      For i As Integer = 0 To attributes.Length - 1
+        .Append(" " & attributes(i) & "=""" & attributevalues(i) & """")
+      Next
+      If selfClose.Contains(type).Length > 0 Then
+        .Append(" />")
+      Else
+        .Append(">" & inner & "</" & type & ">")
+      End If
+    End With
+    Return ret.ToString()
+  End Function
+
+
+
+
 
   ''' <summary>
   ''' 
