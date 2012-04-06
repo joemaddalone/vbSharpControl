@@ -53,9 +53,27 @@ Public Module Extensions_String
   End Function
 
   <Extension()> _
+  Public Function plural(src As String, count As Integer) As String
+    If count = 1 Then
+      Return count & " " & src
+    Else
+      Return count & " " & src & "s"
+    End If
+  End Function
+
+
+  <Extension()> _
+  Function capitalize(ByVal x As String) As String
+    Return StrConv(x, vbProperCase)
+  End Function
+
+
+  <Extension()> _
   Sub jScript(ByVal x As StringBuilder, ByVal y As String)
     x.Append("<script type=""text/javascript"">" & y & "</script>")
   End Sub
+
+
 
 End Module
 
