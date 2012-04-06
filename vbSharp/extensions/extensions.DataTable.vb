@@ -21,11 +21,8 @@ Public Module Extensions_DataTable
   <Extension()> _
   Public Sub forEach(ByVal recs As Data.DataTable,
             ByVal del As System.Delegate,
-            Optional ByVal alt As System.Delegate = Nothing,
             Optional ByVal callback As System.Delegate = Nothing)
     If hasrecs(recs) Then
-      Dim q As System.Delegate
-      If alt Is Nothing Then alt = del
       Dim iterations As Integer = recs.Rows.Count
       Dim i As Integer = 0
       Dim x As Integer = 0
@@ -33,34 +30,24 @@ Public Module Extensions_DataTable
         Dim n As Integer = iterations Mod 8
         If n > 0 Then
           For i = 0 To n - 1
-            q = If(i Mod 2 = 1, alt, del)
-            q.DynamicInvoke(recs.Rows(i), x)
+            del.DynamicInvoke(recs.Rows(i), x)
             x += 1
           Next
         End If
         n = CInt((iterations - x) / 8)
         For i = n To 1 Step -1
-          q = If(x Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(x), x) : x += 1
-          q = If(x Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(x), x) : x += 1
-          q = If(x Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(x), x) : x += 1
-          q = If(x Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(x), x) : x += 1
-          q = If(x Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(x), x) : x += 1
-          q = If(x Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(x), x) : x += 1
-          q = If(x Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(x), x) : x += 1
-          q = If(x Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(x), x) : x += 1
+          del.DynamicInvoke(recs.Rows(x), x) : x += 1
+          del.DynamicInvoke(recs.Rows(x), x) : x += 1
+          del.DynamicInvoke(recs.Rows(x), x) : x += 1
+          del.DynamicInvoke(recs.Rows(x), x) : x += 1
+          del.DynamicInvoke(recs.Rows(x), x) : x += 1
+          del.DynamicInvoke(recs.Rows(x), x) : x += 1
+          del.DynamicInvoke(recs.Rows(x), x) : x += 1
+          del.DynamicInvoke(recs.Rows(x), x) : x += 1
         Next
       Else
         For i = 0 To recs.Rows.Count - 1
-          q = If(i Mod 2 = 1, alt, del)
-          q.DynamicInvoke(recs.Rows(i), i)
+          del.DynamicInvoke(recs.Rows(i), i)
         Next
       End If
     End If
@@ -242,22 +229,35 @@ Public Module Extensions_DataTable
     Dim ret As New StringBuilder
     Dim rows As Integer = recs.Rows.Count - 1
     Dim cols As Integer = recs.Columns.Count - 1
-    With ret
-      .Append("var " & id & " = new Array(" & rows & ");")
-      .Append("for (i=0; i <=" & rows & "; i++){ " &
-              id & "[i] = new Array(" & cols & ");}")
-      recs.forEach(Sub(row As Data.DataRow, i As Integer)
-                     row.forEach(Sub(dat As String, col As Integer)
-                                   .Append(id & "[" & i & "][" & col & "] = """ &
-                                   PG.Server.HtmlEncode(dat.Replace(Chr(10), " ").Replace(Chr(13), " ").Replace(Chr(10) & Chr(13), " ")) & """;")
-                                 End Sub)
-                   End Sub)
-    End With
+    If cols > 0 Then
+      With ret
+        .Append("var " & id & " = new Array(" & rows & ");")
+        .Append("for (i=0; i <=" & rows & "; i++){ " &
+                id & "[i] = new Array(" & cols & ");}")
+        recs.forEach(Sub(row As Data.DataRow, i As Integer)
+                       row.forEach(Sub(dat As String, col As Integer)
+                                     .Append(id & "[" & i & "][" & col & "] = """ &
+                                     PG.Server.HtmlEncode(dat.Replace(Chr(10), " ").Replace(Chr(13), " ").Replace(Chr(10) & Chr(13), " ")) & """;")
+                                   End Sub)
+                     End Sub)
+      End With
+    Else
+      With ret
+        .Append("var " & id & " = [")
+        recs.forEach(Sub(r As Data.DataRow, i As Integer)
+                       .Append("""" & __(r(0)) & """")
+                       If i < recs.Rows.Count - 1 Then
+                         .Append(",")
+                       End If
+                     End Sub)
+        .Append("];")
+      End With
+    End If
     Return ret.ToString
   End Function
 
   ''' <summary>
-  ''' convets datatable to JSON
+  ''' converts datatable to JSON
   ''' </summary>
   ''' <param name="recs"></param>
   ''' <param name="id"></param>
@@ -297,7 +297,13 @@ Public Module Extensions_DataTable
     End With
     Return ret.ToString
   End Function
-
+  ''' <summary>
+  ''' converts datatable to CSV
+  ''' </summary>
+  ''' <param name="recs"></param>
+  ''' <param name="id"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   <Extension()> _
   Public Function toCSV(ByVal recs As Data.DataTable) As String
     Dim ret As New StringBuilder
@@ -320,6 +326,29 @@ Public Module Extensions_DataTable
     Return ret.ToString()
   End Function
 
+  <Extension()> _
+  Public Function contains(recs As Data.DataTable, val As String, field As String) As Boolean
+    Dim ret As Boolean = False
+    recs.forEach(Sub(r As Data.DataRow, x As Integer)
+                   If __(r(field)) = val Then
+                     ret = True
+                   End If
+                 End Sub)
+    Return ret
+  End Function
+
+  <Extension()> _
+  Function [dim](ByVal recs As Data.DataTable,
+                 fields As String()) As Dictionary(Of String, String)
+    Dim ret As New Dictionary(Of String, String)
+    Dim has As Boolean = hasrecs(recs)
+    For Each field In fields
+      ret.Add(field, If(has, __(recs.Rows(0)(field)), ""))
+    Next
+    Return ret
+  End Function
+
+  
 
 End Module
 
