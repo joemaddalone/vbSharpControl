@@ -8,7 +8,7 @@ Public Module Extensions_Array
   
 
   <Extension()> _
-  Public Function Slice(Of T)(source As T(), start As Integer, finish As Integer) As T()
+  Public Function slice(Of T)(source As T(), start As Integer, finish As Integer) As T()
     If finish < 0 Then
       finish = source.Length + finish
     End If
@@ -77,12 +77,16 @@ Public Module Extensions_Array
 
 
   <Extension()> _
-  Public Sub Insert(ByRef str() As String, ByVal pos As Integer, ByVal val As String)
+  Public Sub Insert(ByRef str() As String, ByVal val As String, Optional pos As Integer = Nothing)
     Dim x As New List(Of String)
     For i As Integer = 0 To UBound(str)
       x.Add(str(i))
     Next
-    x.Insert(pos, val)
+    If __(pos) <> "" Then
+      x.Insert(pos, val)
+    Else
+      x.Add(val)
+    End If
     str = x.ToArray
   End Sub
 
