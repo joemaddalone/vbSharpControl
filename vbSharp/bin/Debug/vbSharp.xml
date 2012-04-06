@@ -24,7 +24,7 @@ vbSharp
 	<summary>
 	</summary>
 	<remarks></remarks>
-</member><member name="M:vbSharp.Extensions_Array.Slice``1(``0[],System.Int32,System.Int32)">
+</member><member name="M:vbSharp.Extensions_Array.slice``1(``0[],System.Int32,System.Int32)">
 	<summary>
  A lot of cheating here applying List functionality to old school arrays
  </summary>
@@ -347,7 +347,7 @@ vbSharp
 	<param name="x"></param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:vbSharp.dataObj.Execute(System.String,System.Boolean)">
+</member><member name="M:vbSharp.dataObj.Execute(System.String,System.Boolean,System.Boolean)">
 	<summary>
 	</summary>
 	<param name="strSQL"></param>
@@ -472,14 +472,6 @@ vbSharp
 	<param name="liclass"></param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:vbSharp.commonhtml.href(System.String,System.String,System.String)">
-	<summary>
-	</summary>
-	<param name="url"></param>
-	<param name="lbl"></param>
-	<param name="style"></param>
-	<returns></returns>
-	<remarks></remarks>
 </member><member name="M:vbSharp.commonhtml.imghref(System.String,System.String,System.String,System.String)">
 	<summary>
 	</summary>
@@ -507,15 +499,6 @@ vbSharp
 	<param name="style"></param>
 	<param name="id"></param>
 	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:vbSharp.Extensions_DataTable.forEach(System.Data.DataTable,System.Delegate,System.Delegate,System.Delegate)">
-	<summary>
- forEach for data.datatable, Replace for... next
- </summary>
-	<param name="recs"></param>
-	<param name="del"></param>
-	<param name="alt"></param>
-	<param name="callback"></param>
 	<remarks></remarks>
 </member><member name="M:vbSharp.Extensions_DataTable.isLast(System.Data.DataRow,System.Int32)">
 	<summary>
@@ -569,7 +552,7 @@ vbSharp
 	<remarks></remarks>
 </member><member name="M:vbSharp.Extensions_DataTable.toJSON(System.Data.DataTable,System.String)">
 	<summary>
- convets datatable to JSON
+ converts datatable to JSON
  </summary>
 	<param name="recs"></param>
 	<param name="id"></param>
@@ -722,9 +705,9 @@ vbSharp
 	<param name="x"></param>
 	<param name="y"></param>
 	<remarks></remarks>
-</member><member name="M:vbSharp.read.sql(System.String)">
+</member><member name="M:vbSharp.read.sql(System.String,System.Boolean)">
 	<summary>
- REturns Datatable from MS-SQL Server based on specified T-SQL query.
+ Returns Datatable from MS-SQL Server based on specified T-SQL query.
  </summary>
 	<param name="sqlString">The SQL query.</param>
 	<returns>Datatable</returns>
@@ -860,6 +843,16 @@ vbSharp
 	<returns></returns>
 	<remarks></remarks>
 </member><member name="M:vbSharp.form.tel(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="name"></param>
+	<param name="cssclass"></param>
+	<param name="value"></param>
+	<param name="placeholder"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.form.number(System.String,System.String,System.String,System.String,System.String)">
 	<summary>
 	</summary>
 	<param name="id"></param>

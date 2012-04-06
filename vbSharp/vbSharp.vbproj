@@ -85,6 +85,7 @@
     <Compile Include="commonData\common.data.vb" />
     <Compile Include="connections\oledb.vb" />
     <Compile Include="connections\sqldb.vb" />
+    <Compile Include="Unsorted\compare.vb" />
     <Compile Include="Unsorted\edit.vb" />
     <Compile Include="extensions\extensions.DataTable.vb" />
     <Compile Include="extensions\extensions.JavaScript.vb" />

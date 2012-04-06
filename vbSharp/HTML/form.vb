@@ -222,7 +222,6 @@ Public Class form
       If SelectedValue <> "" Then
         ddl.SelectedIndex = ddl.Items.IndexOf(ddl.Items.FindByValue(SelectedValue))
       End If
-
       Return rc(ddl)
     End Using
   End Function
@@ -310,6 +309,24 @@ Public Class form
   Shared Function tel(ByVal id As String, ByVal name As String, ByVal cssclass As String, ByVal value As String, Optional placeholder As String = "") As String
     Return form.genInput("tel", id, name, cssclass, value, placeholder)
   End Function
+
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <param name="id"></param>
+  ''' <param name="name"></param>
+  ''' <param name="cssclass"></param>
+  ''' <param name="value"></param>
+  ''' <param name="placeholder"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
+  Shared Function number(ByVal id As String, ByVal name As String, ByVal cssclass As String, ByVal value As String, Optional placeholder As String = "") As String
+    Return form.genInput("number", id, name, cssclass, value, placeholder)
+  End Function
+
+
+
 
   ''' <summary>
   ''' 
@@ -552,8 +569,9 @@ Public Class form
       Case 12 ' url
         ret = form.URL(id, name, cssClass, val, placeholder)
       Case 13 ' number
-
+        ret = form.number(id, name, cssClass, val, placeholder)
       Case 14 ' search
+        ret = form.search(id, name, cssClass, val, placeholder)
       Case 15 ' tel
         ret = form.tel(id, name, cssClass, val, placeholder)
       Case 16 ' datetime
