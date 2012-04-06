@@ -36,13 +36,24 @@ Public Module dataObj
   ''' <returns></returns>
   ''' <remarks></remarks>
   Public Function Execute(ByVal strSQL As String,
-                          Optional ByVal ExecuteScalar As Boolean = False) As Object
+                          Optional ByVal ExecuteScalar As Boolean = False, Optional ByVal sanitize As Boolean = True) As Object
     Dim cmd As SqlCommand = conn.sql.connection.CreateCommand
-    cmd.CommandText = strSQL
-    If ExecuteScalar Then
-      Return cmd.ExecuteScalar
+    Dim runSQL As Boolean = True
+    If sanitize Then
+      Dim testString As String = strSQL.ToLower()
+      If testString.mIndexOf({"declare", "exec"}) Then
+        runSQL = False
+      End If
+    End If
+    If runSQL Then
+      cmd.CommandText = strSQL
+      If ExecuteScalar Then
+        Return cmd.ExecuteScalar
+      Else
+        Return cmd.ExecuteNonQuery
+      End If
     Else
-      Return cmd.ExecuteNonQuery
+      Return Nothing
     End If
   End Function
 
