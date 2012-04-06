@@ -340,6 +340,8 @@ Public Module advMath
       Case Is < 20 : Return toNineteen(x)
       Case 20 To 99 : Return tens(CInt(x \ 10)) & " " & convertToWords(x Mod 10)
       Case 100 To 999 : Return toNineteen(CInt(x \ 100)) & " hundred " & convertToWords(x Mod 100)
+      Case 1000 To 9999 : Return toNineteen(CInt(x \ 1000)) & " thousand " & convertToWords(x Mod 1000)
+
       Case Else
         Return ""
     End Select
