@@ -23,7 +23,7 @@ Public Class fs
 
   Shared Sub create(path As String, content As String)
     fs.delete(path)
-    Using x As New System.IO.StreamWriter(path, False) : x.WriteLine(content) : x.Close() : End Using
+    Using x As New System.IO.StreamWriter(path, False) : x.WriteLine(content) : End Using
   End Sub
 
 End Class
