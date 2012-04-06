@@ -2,17 +2,27 @@
 Imports System.Data.SqlClient
 Partial Public Class read
   ''' <summary>
-  ''' REturns Datatable from MS-SQL Server based on specified T-SQL query.
+  ''' Returns Datatable from MS-SQL Server based on specified T-SQL query.
   ''' </summary>
   ''' <param name="sqlString">The SQL query.</param>
   ''' <returns>Datatable</returns>
-  Public Shared Function sql(ByVal sqlString As String) As System.Data.DataTable
-    Using recs As DataTable = New DataTable()
-      Using sa As New SqlDataAdapter(sqlString, conn.sql.connection)
-        sa.Fill(recs)
-        Return recs
+  Public Shared Function sql(ByVal sqlString As String, Optional sanitize As Boolean = True) As System.Data.DataTable
+    Dim runSQL As Boolean = True
+    If sanitize Then
+      Dim testString As String = sqlString.ToLower()
+      If testString.mIndexOf({"declare", "exec"}) Then
+        runSQL = False
+      End If
+    End If
+    If runSQL Then
+      Using recs As DataTable = New DataTable()
+        Using sa As New SqlDataAdapter(sqlString, conn.sql.connection)
+          sa.Fill(recs)
+          Return recs
+        End Using
       End Using
-    End Using
+    Else
+      Return Nothing
+    End If
   End Function
-
 End Class
