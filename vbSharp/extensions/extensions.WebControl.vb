@@ -17,12 +17,13 @@ Public Module Extensions_WebControl
   ''' <remarks></remarks>
   Public Function rc(ByVal ctrl As Control) As String
     Dim sb As New StringBuilder
-    Using tw As New StringWriter(sb)
-      Dim hw As New HtmlTextWriter(tw)
-      ctrl.RenderControl(hw)
-      hw.Dispose()
-    End Using
+    Dim tw As New StringWriter(sb)
+    Dim hw As New HtmlTextWriter(tw)
+    ctrl.RenderControl(hw)
     Return sb.ToString
+    tw.Dispose()
+    hw.Dispose()
+
   End Function
 
   ''' <summary>
@@ -57,6 +58,12 @@ Public Module Extensions_WebControl
     x.Addlit("<link href=""" & y & """ rel=""stylesheet"" type=""text/css"" />")
   End Sub
 
+
+  <Extension()> _
+  Public Sub AddCSS(ByVal x As StringBuilder, ByVal y As String)
+    x.Append("<link href=""" & y & """ rel=""stylesheet"" type=""text/css"" />")
+  End Sub
+
   ''' <summary>
   ''' add javascript link to control
   ''' </summary>
@@ -67,6 +74,12 @@ Public Module Extensions_WebControl
   Public Sub AddJS(ByVal x As Control, ByVal y As String)
     x.Addlit("<script type=""text/javascript"" src=""" & y & """></script>")
   End Sub
+
+  <Extension()> _
+  Public Sub AddJS(ByVal x As StringBuilder, ByVal y As String)
+    x.Append("<script type=""text/javascript"" src=""" & y & """></script>")
+  End Sub
+
 
   ''' <summary>
   ''' adds javascript to control
