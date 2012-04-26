@@ -74,6 +74,5 @@ Public Module Extensions_String
   End Sub
 
 
-
 End Module
 
