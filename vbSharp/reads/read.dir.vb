@@ -45,7 +45,6 @@ Partial Public Class read
         .Add("FileSize")
         .Add("LastAccess")
       End With
-
       Dim row As DataRow
       For Each f In files
         row = recs.NewRow()

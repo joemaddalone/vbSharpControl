@@ -5,8 +5,6 @@ Public Module Extensions_Array
   ''' <summary>
   ''' A lot of cheating here applying List functionality to old school arrays
   ''' </summary>
-  
-
   <Extension()> _
   Public Function slice(Of T)(source As T(), start As Integer, finish As Integer) As T()
     If finish < 0 Then
@@ -27,8 +25,8 @@ Public Module Extensions_Array
       ret.Add(word)
     Next
     Return ret.ToArray
-  End Function
 
+  End Function
 
   <Extension()> _
   Public Function EndsWith(source As String(), str As String) As String()
@@ -51,77 +49,88 @@ Public Module Extensions_Array
 
 
   <Extension()> _
-  Public Sub Incr(ByRef str() As String)
-    ReDim Preserve str(UBound(str) + 1)
-  End Sub
+  Public Function Incr(Of T)(ByRef arr As T()) As T()
+    ReDim Preserve arr(UBound(arr) + 1)
+    Return arr
+  End Function
 
   <Extension()> _
-  Public Function First(ByRef str() As String) As String
+  Public Function First(Of T)(ByRef str As T()) As T
     Return str(0)
   End Function
 
   <Extension()> _
-  Public Sub First(ByRef str() As String, ByVal val As String)
+  Public Function First(Of T)(ByRef str As T(), ByVal val As T) As T()
     str(0) = val
-  End Sub
+    Return str
+  End Function
 
   <Extension()> _
-  Public Function Last(ByRef str() As String) As String
+  Public Function Last(Of T)(ByRef str As T()) As T
     Return str(UBound(str))
   End Function
 
   <Extension()> _
-  Public Sub Last(ByRef str() As String, ByVal val As String)
-    str(UBound(str)) = val
-  End Sub
+  Public Function Last(Of T)(ByRef arr As T(), ByVal val As T) As T()
+
+    arr(UBound(arr)) = val
+    Return arr
+  End Function
 
 
   <Extension()> _
-  Public Sub Insert(ByRef str() As String, ByVal val As String, Optional pos As Integer = Nothing)
-    Dim x As New List(Of String)
-    For i As Integer = 0 To UBound(str)
-      x.Add(str(i))
-    Next
-    If __(pos) <> "" Then
-      x.Insert(pos, val)
+  Public Function Insert(Of T)(ByRef arr As T(), val As T, Optional pos As Integer = -1) As T()
+    Dim l As New List(Of T)
+    l = arr.ToList()
+    If pos = -1 Then
+      l.Add(val)
     Else
-      x.Add(val)
+      l.Insert(pos, val)
     End If
-    str = x.ToArray
-  End Sub
-
-  <Extension()> _
-  Public Sub Insert(ByRef str() As String, ByVal pos As Integer, ByVal vals() As String)
-    Dim x As New List(Of String)
-    Dim i As Integer
-    For i = 0 To UBound(str)
-      x.Add(str(i))
-    Next
-
-    For i = pos To UBound(vals)
-      If i <= x.Count Then
-        x.Insert(i, vals(i - pos))
-      Else
-        x.Add(vals(i - pos))
-      End If
-    Next
-    str = x.ToArray
-  End Sub
+    arr.RemoveAll()
+    arr = l.ToArray
+    Insert = l.ToArray
+  End Function
 
 
 
   <Extension()> _
-  Public Sub Remove(ByRef str() As String, ByVal pos As Integer)
-    Dim x As New List(Of String)
-    For i As Integer = 0 To UBound(str)
-      x.Add(str(i))
-    Next
+  Public Function Remove(Of T)(ByRef arr As T(), ByVal pos As Integer) As T()
+    Dim x As New List(Of T)
+    Dim mytype As Type = GetType(T())
+    Array.ForEach(arr, New Action(Of T)(Sub(str As T) x.Add(DirectCast(Convert.ChangeType(str, GetType(T)), T))))
     x.RemoveAt(pos)
-    str = x.ToArray
-  End Sub
+    arr.RemoveAll()
+    arr = x.ToArray()
+    Return arr
+  End Function
+
 
   <Extension()> _
-  Public Sub RemoveAll(ByRef str() As String)
-    ReDim str(-1)
-  End Sub
+  Public Function Remove(ByRef arr As String(), ByVal str As String) As String()
+    Dim ret As New List(Of String)
+    For Each word As String In arr.Where(Function(w) w <> str)
+      ret.Add(word)
+    Next
+    arr.RemoveAll()
+    arr = ret.ToArray()
+    Return arr
+  End Function
+
+
+
+  <Extension()> _
+  Public Function RemoveAll(Of T)(ByRef arr As T()) As T()
+    ReDim arr(-1)
+    Return arr
+  End Function
+
+  <Extension()> _
+  Public Function aCleanSQL(ByRef arr() As String) As String()
+    Dim newarr As String() = {}
+    Array.ForEach(arr, New Action(Of String)(Sub(str As String) newarr.Insert("'" & CleanSQL(str) & "'")))
+    arr = newarr
+    Return newarr
+  End Function
+
 End Module

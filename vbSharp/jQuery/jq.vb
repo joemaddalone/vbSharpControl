@@ -50,7 +50,8 @@ Public Class jq
   End Function
 
   Shared Function getJSON(url As String, success As String) As String
-    Return "$.getJSON('" & url & "', function(data) {" & success & "});"
+    'Return "$.getJSON('" & url & "', function(data) {" & success & "});"
+    Return "$.getJSON('" & url & "'," & js.func("data", success) & ";"
   End Function
 
   
