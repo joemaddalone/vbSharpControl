@@ -1,11 +1,11 @@
 ﻿Imports System.Text
 
 Public Class js
-  Shared forLoop As Func(Of String, String, String, String) = Function(i, until, inner) " for (var " & i & "=0;" & i & until & ";" & i & "++) {" & inner & "}"
-  Shared [function] As Func(Of String, String, String, String) = Function(name, params, inner) " function " & name & "(" & params & "){" & inner & "}"
-  Shared func As Func(Of String, String, String) = Function(params, inner) "function(" & params & "){" & inner & "}"
-  Shared var As Func(Of String, String, String) = Function(name, val) " var " & name & "=" & val & ";"
-  Shared [if] As Func(Of String, String, String, String) =
+  Public Shared forLoop As Func(Of String, String, String, String) = Function(i, until, inner) " for (var " & i & "=0;" & i & until & ";" & i & "++) {" & inner & "}"
+  Public Shared [function] As Func(Of String, String, String, String) = Function(name, params, inner) " function " & name & "(" & params & "){" & inner & "}"
+  Public Shared func As Func(Of String, String, String) = Function(params, inner) "function(" & params & "){" & inner & "}"
+  Public Shared var As Func(Of String, String, String) = Function(name, val) " var " & name & "=" & val & ";"
+  Public Shared [if] As Func(Of String, String, String, String) =
     Function(trueStatement, trueaction, elseaction) If(elseaction <> "",
                                                        "if(" & trueStatement & "){" & trueaction & "} else {" & elseaction & "}",
                                                        "if(" & trueStatement & "){" & trueaction & "}")
