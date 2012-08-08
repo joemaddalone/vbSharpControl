@@ -6,7 +6,43 @@ vbSharp
 </name>
 </assembly>
 <members>
-<member name="T:vbSharp.Extensions_String">
+<member name="T:vbSharp.Utility.SortOrder">
+	<summary>
+ Sort order enumeration
+ </summary>
+</member><member name="M:vbSharp.Utility.Sorter`1.#ctor(System.String)">
+	<summary>
+ Instantiate the class, setting the sort string.
+ 
+ Example: "LastName DESC, FirstName"
+ </summary>
+</member><member name="P:vbSharp.Utility.Sorter`1.SortString">
+	<summary>
+ The sort string used to perform the sort. Can sort on multiple fields.
+ Use the property names of the class and basic SQL Syntax.
+ 
+ Example: "LastName DESC, FirstName"
+ </summary>
+</member><member name="M:vbSharp.Utility.Sorter`1.Compare(`0,`0)">
+	<summary>
+ This is an implementation of IComparer(Of T).Compare
+ Can sort on multiple fields, or just one.
+ </summary>
+</member><member name="T:vbSharp.Utility.Sorter`1">
+	<summary>
+ This instance class is used to sort a generic collection of object instances.
+ It automatically fetches the type and performs the necessary comparison(s) to sort.
+ 
+ To use, instantiate this class, set the sort string property, and pass this
+ instance to the internal Sort() function of your generic collection.
+ 
+ Example:
+     Dim MyList As List(Of MyClassType) = 'Populate the list somehow
+     Dim Sorter As New Sorter(Of MyClassType)
+     Sorter.SortString = "Field1 DESC, Field2"
+     MyList.Sort(Sorter) 'After this call, the list is sorted
+ </summary>
+</member><member name="T:vbSharp.Extensions_String">
 	<summary>
  Extends string
  </summary>
@@ -624,6 +660,11 @@ vbSharp
 	<returns></returns>
 	<remarks></remarks>
 </member><member name="M:vbSharp.commonData.usStates">
+	<summary>
+	</summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:vbSharp.commonData.canadaProvince">
 	<summary>
 	</summary>
 	<returns></returns>

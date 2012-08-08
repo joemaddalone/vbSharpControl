@@ -78,6 +78,7 @@
     <Compile Include="javascript\javascript.vb" />
     <Compile Include="javascript\jsmin.vb" />
     <Compile Include="javascript\json.vb" />
+    <Compile Include="lists\listSorter.vb" />
     <Compile Include="reads\read.url.vb" />
     <Compile Include="swfobject\swf.vb" />
     <Compile Include="Unsorted\common.dataObj.vb" />
