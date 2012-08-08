@@ -317,9 +317,52 @@
       .Add(New usState("West Virginia", "WV"))
       .Add(New usState("Wisconsin", "WI"))
       .Add(New usState("Wyoming", "WY"))
+      .Add(New usState("Alberta", "AB"))
+      .Add(New usState("British Columbia", "BC"))
+      .Add(New usState("Manitoba", "MB"))
+      .Add(New usState("New Brunswick", "NB"))
+      .Add(New usState("Newfoundland and Labrador", "NL"))
+      .Add(New usState("Northwest Territories", "NT"))
+      .Add(New usState("Nova Scotia", "NS"))
+      .Add(New usState("Nunavut", "NU"))
+      .Add(New usState("Ontario", "ON"))
+      .Add(New usState("Prince Edward Island", "PE"))
+      .Add(New usState("Quebec", "QC"))
+      .Add(New usState("Saskatchewan", "SK"))
+      .Add(New usState("Yukon", "YT"))
+    End With
+    Dim Sorter As New Utility.Sorter(Of usState)
+    Sorter.SortString = "fullName"
+    this.Sort(Sorter)
+    Return this
+  End Function
+ 
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
+  Shared Function canadaProvince() As List(Of usState)
+    Dim this As New List(Of usState)
+    With this
+      .Add(New usState("Alberta", "AB"))
+      .Add(New usState("British Columbia", "BC"))
+      .Add(New usState("Manitoba", "MB"))
+      .Add(New usState("New Brunswick", "NB"))
+      .Add(New usState("Newfoundland and Labrador", "NL"))
+      .Add(New usState("Northwest Territories", "NT"))
+      .Add(New usState("Nova Scotia", "NS"))
+      .Add(New usState("Nunavut", "NU"))
+      .Add(New usState("Ontario", "ON"))
+      .Add(New usState("Prince Edward Island", "PE"))
+      .Add(New usState("Quebec", "QC"))
+      .Add(New usState("Saskatchewan", "SK"))
+      .Add(New usState("Yukon", "YT"))
     End With
     Return this
   End Function
+
 
   ''' <summary>
   ''' 
@@ -351,6 +394,8 @@ End Class
 
 
 Public Class usState
+ 
+
   Property fullName As String
   Property abbreviatedName As String
   ''' <summary>
@@ -363,6 +408,7 @@ Public Class usState
     fullName = full
     abbreviatedName = abbreviation
   End Sub
+
 End Class
 
 
