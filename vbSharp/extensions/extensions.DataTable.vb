@@ -62,12 +62,7 @@ Public Module Extensions_DataTable
   ''' <remarks></remarks>
   <Extension()> _
   Public Function isLast(ByVal row As Data.DataRow, index As Integer) As Boolean
-    Dim cnt As Integer = row.Table.Rows.Count - 1
-    If index = cnt Then
-      Return True
-    Else
-      Return False
-    End If
+    Return index = (row.Table.Rows.Count - 1)
   End Function
 
 

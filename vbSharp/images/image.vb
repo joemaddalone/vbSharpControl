@@ -119,15 +119,30 @@ Public Class images
     'actual image
     'w=310
     'h=207
+    Dim bm As Bitmap = CType(System.Drawing.Image.FromFile(strFileName), Bitmap)
+    Dim newWidth As Integer
+    Dim newHeight As Integer
 
+    Dim originalWidth As Integer = bm.Width
+    Dim originalHeight As Integer = bm.Height
+    Dim percentWidth As Single = CSng(w) / CSng(originalWidth)
+    Dim percentHeight As Single = CSng(h) / CSng(originalHeight)
+    Dim percent As Single = If(percentHeight < percentWidth, percentHeight, percentWidth)
+    newWidth = CInt(originalWidth * percent)
+    newHeight = CInt(originalHeight * percent)
+    Dim newImage As Image = New Bitmap(newWidth, newHeight)
+    Using graphicsHandle As Graphics = Graphics.FromImage(newImage)
+      graphicsHandle.InterpolationMode = InterpolationMode.HighQualityBicubic
+      graphicsHandle.DrawImage(bm, 0, 0, newWidth, newHeight)
+    End Using
 
     'Create a new Bitmap Image loading from location of original file
-    Dim bm As Bitmap = CType(System.Drawing.Image.FromFile(strFileName), Bitmap)
+    'Dim bm As Bitmap = CType(System.Drawing.Image.FromFile(strFileName), Bitmap)
 
     'Declare Thumbnails new Height and new Width
-    Dim newHeight As Integer = CInt((w / bm.Width) * bm.Height)
+    'Dim newHeight As Integer = CInt((w / bm.Width) * bm.Height)
     '(250/310)*207=166
-    Dim newWidth As Integer = CInt((newHeight / bm.Height) * bm.Width)
+    'Dim newWidth As Integer = CInt((newHeight / bm.Height) * bm.Width)
     '(166/207)*310=248
     'Create the new image as a blank bitmap
     Dim resized As Bitmap = New Bitmap(w, h)
@@ -155,6 +170,9 @@ Public Class images
     'Save the new image to the same folder as the original
     Try
       resized.Save(newStrFileName, ImageFormat.Jpeg)
+      'Dim resized As Image = newImage
+      'Dim memStream As MemoryStream = New MemoryStream()
+      'newImage.Save(newStrFileName, ImageFormat.Jpeg)
     Catch ex As Exception
       'nothing
     End Try
