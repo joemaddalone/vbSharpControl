@@ -79,14 +79,6 @@ Public Module commonhtml
 
   End Function
 
-  ''' <summary>
-  ''' 
-  ''' </summary>
-  ''' <param name="url"></param>
-  ''' <param name="lbl"></param>
-  ''' <param name="style"></param>
-  ''' <returns></returns>
-  ''' <remarks></remarks>
   Function href(ByVal url As String, ByVal lbl As String, Optional ByVal cssClass As String = "") As String
     If cssClass = "" Then
       Return "<a href=""" & url & """>" & lbl & "</a>"

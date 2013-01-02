@@ -49,6 +49,23 @@ Public Class jq
         Return ret.ToString
     End Function
 
+    Shared Function [get](url As String, ByVal vals As String(), ByVal pars As String(), func As String) As String
+        Dim ret As New StringBuilder
+        With ret
+            .Append("$.get(")
+            .Append("'" & url & "?")
+            For i As Integer = 0 To pars.Count - 1
+                .Append("&")
+                .Append(pars(i))
+                .Append("=' + " & vals(i) & " + '")
+            Next
+            .Append("',function(data){" & func & "})")
+        End With
+        Return ret.ToString()
+    End Function
+
+
+
     Shared Function getJSON(url As String, success As String) As String
         'Return "$.getJSON('" & url & "', function(data) {" & success & "});"
         Return "$.getJSON('" & url & "'," & js.func("data", success) & ";"

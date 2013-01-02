@@ -547,7 +547,7 @@ vbSharp
 	<param name="id"></param>
 	<param name="tbl"></param>
 	<remarks></remarks>
-</member><member name="M:vbSharp.edit.sqlWriter(System.String,System.String[],System.String[],System.String,System.Boolean)">
+</member><member name="M:vbSharp.edit.sqlWriter(System.String,System.String[],System.String[],System.String,System.Boolean,System.String)">
 	<summary>
 	</summary>
 	<param name="tbl"></param>

@@ -15,7 +15,9 @@ Partial Public Class executes
     Using cmd As SqlCommand = conn.sql.connection.CreateCommand
       cmd.CommandText = strSQL
       Return If(ExecuteScalar, cmd.ExecuteScalar, cmd.ExecuteNonQuery)
-    End Using
-  End Function
+        End Using
+
+    End Function
+
 
 End Class

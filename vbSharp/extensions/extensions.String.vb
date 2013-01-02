@@ -16,7 +16,7 @@ Public Module Extensions_String
   <Extension()> _
   Public Function mIndexOf(src As String, find As String()) As Boolean
     Dim ret As Boolean = False
-    Array.ForEach(find, New Action(Of String)(Sub(str As String) If str.IndexOf(src) > 0 Then ret = True))
+        Array.ForEach(find, New Action(Of String)(Sub(str As String) If str.IndexOf(src) <> -1 Then ret = True))
     Return ret
   End Function
 

@@ -10,14 +10,7 @@ Imports System.Web.UI.HtmlControls
 ''' </summary>
 ''' <remarks></remarks>
 Public Module Extensions_DataTable
-    ''' <summary>
-    ''' forEach for data.datatable, Replace for... next
-    ''' </summary>
-    ''' <param name="recs"></param>
-    ''' <param name="del"></param>
-    ''' <param name="alt"></param>
-    ''' <param name="callback"></param>
-    ''' <remarks></remarks>
+   
     <Extension()> _
     Public Sub forEach(ByVal recs As Data.DataTable,
             ByVal del As System.Delegate,
@@ -310,13 +303,7 @@ Public Module Extensions_DataTable
         End With
         Return ret.ToString
     End Function
-    ''' <summary>
-    ''' converts datatable to CSV
-    ''' </summary>
-    ''' <param name="recs"></param>
-    ''' <param name="id"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+   
     <Extension()> _
     Public Function toCSV(ByVal recs As Data.DataTable) As String
         Dim ret As New StringBuilder
@@ -336,7 +323,7 @@ Public Module Extensions_DataTable
                 ret.Append(vbCrLf)
             Next
         End If
-        Return ret.ToString()
+        Return ret.ToString().Replace("," & vbCrLf, vbCrLf)
     End Function
 
     <Extension()> _
