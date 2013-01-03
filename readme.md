@@ -25,4 +25,5 @@ Output with records:
 	CompanyB<br />
 
 Output with no records:
+	
 	There was no data!
