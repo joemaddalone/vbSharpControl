@@ -5,7 +5,8 @@ VBSharp is a collection of extensions and classes to make ASP.NET development fa
 I use this codebase every single day and you may find it useful as well.  It works with VB.NET and C#.
 
 
-## Example: .forEach extension to Data.DataTable ##
+Example: .forEach extension to Data.DataTable
+---------------------
 
 
     Sub start() Handles Me.Load
