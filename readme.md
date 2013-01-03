@@ -8,8 +8,6 @@ I use this codebase every single day and you may find it useful as well.  It wor
 Example: .forEach extension to Data.DataTable
 ---------------------
 
-
-    Sub start() Handles Me.Load
         Dim ret As New StringBuilder
         With ret
             read.sql("select * from manufacturer") _
@@ -19,7 +17,6 @@ Example: .forEach extension to Data.DataTable
                          Sub() rW(ret.ToString),
                          Sub() .Append("There was no data!"))
         End With
-    End Sub
     
 Output with records:
 	
@@ -30,3 +27,57 @@ Output with records:
 Output with no records:
 	
 	There was no data!
+
+Example: CSV as Data.Datatable
+---------------------    
+    
+    Dim recs As Data.DataTable =
+      read.csv(PathOf("app_data/randomdata.csv"),True)
+
+Example: Directory as Data.Datatable
+---------------------    
+
+    Dim recs As Data.DataTable =
+      read.dir(PathOf("examples/forEach/"))
+
+Example: Convert Data.Datatable to various formats
+---------------------    
+
+    (DataTable).toJSON("id-for-json")
+    (DataTable).toJS("id-for-js-array")
+    (DataTable).toCSV()
+    (DataTable).toTable()
+
+Shortcuts
+---------------------    
+
+    (control).AddLit(string)
+    Adds literal to a control with .Text
+
+    (control).AppendControl(control)
+    Adds a control to a control
+
+    (control).AddCSS(String)
+    Adds <link href="{string}" media="screen" rel="stylesheet" type="text/css" /> to control
+
+    (control).AddJS(String)
+    Adds <script src="{string}" type="text/javascript"></script> to control
+
+    el(HTML-TAG,Inner Content,{attributes},{attribute values})
+    Ex. el("div","Hellow World",{"id","class","style"},{"id","class","border:1px solid green"})
+    Returns:
+    <div id="id" class="class" style="border:1px solid green">Hellow World</div>
+
+    html.ANY-HTML-TAG(inner-content)
+    html.ANY-HTML-TAG(inner-content,id)
+    html.ANY-HTML-TAG(inner-content,id,class)
+
+    Ex.
+    html.h1("Hello World!")
+    html.h1("Hello World!","ID")
+    html.h1("Hello World!","ID","CLASS")
+
+    Returns:
+        <h1>Hello World!</h1>
+        <h1 id="ID">Hello World!</h1>
+        <h1 id="ID" class="CLASS">Hello World!</h1>
