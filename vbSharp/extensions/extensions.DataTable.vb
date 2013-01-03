@@ -14,7 +14,8 @@ Public Module Extensions_DataTable
     <Extension()> _
     Public Sub forEach(ByVal recs As Data.DataTable,
             ByVal del As System.Delegate,
-            Optional ByVal callback As System.Delegate = Nothing)
+            Optional ByVal callback As System.Delegate = Nothing,
+            Optional ByVal empty As System.Delegate = Nothing)
         If hasrecs(recs) Then
             Dim iterations As Integer = recs.Rows.Count
             Dim i As Integer = 0
@@ -43,6 +44,8 @@ Public Module Extensions_DataTable
                     del.DynamicInvoke(recs.Rows(i), i)
                 Next
             End If
+        Else
+            If Not empty Is Nothing Then empty.DynamicInvoke()
         End If
         If Not callback Is Nothing Then callback.DynamicInvoke()
     End Sub
@@ -58,7 +61,16 @@ Public Module Extensions_DataTable
         Return index = (row.Table.Rows.Count - 1)
     End Function
 
-
+    ''' <summary>
+    ''' isFirst for data.row
+    ''' </summary>
+    ''' <param name="row"></param>
+    ''' <param name="index"></param>
+    ''' <remarks></remarks>
+    <Extension()> _
+    Public Function isFirst(ByVal row As Data.DataRow, index As Integer) As Boolean
+        Return index = 0
+    End Function
 
     ''' <summary>
     ''' forEach for data.row
@@ -165,11 +177,9 @@ Public Module Extensions_DataTable
                           Next
                       End Sub)
                 End If
-
                 .Append("</tbody>")
                 .Append("</table>")
             End With
-
         End If
         Return ret.ToString
     End Function

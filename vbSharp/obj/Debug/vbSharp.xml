@@ -737,6 +737,13 @@ vbSharp
 	<param name="row"></param>
 	<param name="index"></param>
 	<remarks></remarks>
+</member><member name="M:vbSharp.Extensions_DataTable.isFirst(System.Data.DataRow,System.Int32)">
+	<summary>
+ isFirst for data.row
+ </summary>
+	<param name="row"></param>
+	<param name="index"></param>
+	<remarks></remarks>
 </member><member name="M:vbSharp.Extensions_DataTable.forEach(System.Data.DataRow,System.Delegate,System.Delegate,System.Delegate)">
 	<summary>
  forEach for data.row
