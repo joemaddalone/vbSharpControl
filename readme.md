@@ -11,7 +11,7 @@ Example: .forEach extension to Data.DataTable
         Dim ret As New StringBuilder
         With ret
             read.sql("select * from manufacturer") _
-                .forEach(Sub(r As Data.DataRow, i As Integer)
+                .forEach(Sub(r As Data.DataRow, i As Integer)   
                              .Append(__(r("title")) & html.br())
                          End Sub,
                          Sub() rW(ret.ToString),
@@ -58,7 +58,7 @@ Shortcuts
     Adds a control to a control
 
     (control).AddCSS(String)
-    Adds <link href="{string}" media="screen" rel="stylesheet" type="text/css" /> to control
+    Adds <link href="{string}" rel="stylesheet" type="text/css" /> to control
 
     (control).AddJS(String)
     Adds <script src="{string}" type="text/javascript"></script> to control
