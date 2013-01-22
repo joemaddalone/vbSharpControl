@@ -106,6 +106,18 @@ Public Module Extensions_DataTable
     End Function
 
 
+
+    <Extension()> _
+    Public Function toArray(ByVal col As Data.DataColumn) As String()
+        Dim ret As New List(Of String)
+        Dim recs As Data.DataTable = col.Table
+        recs.forEach(Sub(r As Data.DataRow, i As Integer)
+                         ret.Add(__(r(col.ColumnName)))
+                     End Sub)
+        Return ret.ToArray()
+    End Function
+
+
     ''' <summary>
     ''' This is cheating for the end user who absolutely cant use ROW_NUMBER
     ''' </summary>
