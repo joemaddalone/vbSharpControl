@@ -1,0 +1,8 @@
+K:\github\vbSharpControl\vbSharp\bin\Release\vbSharp.dll
+K:\github\vbSharpControl\vbSharp\bin\Release\vbSharp.pdb
+K:\github\vbSharpControl\vbSharp\bin\Release\vbSharp.xml
+K:\github\vbSharpControl\vbSharp\obj\Release\vbSharp.Resources.resources
+K:\github\vbSharpControl\vbSharp\obj\Release\vbSharp.vbproj.GenerateResource.Cache
+K:\github\vbSharpControl\vbSharp\obj\Release\vbSharp.dll
+K:\github\vbSharpControl\vbSharp\obj\Release\vbSharp.xml
+K:\github\vbSharpControl\vbSharp\obj\Release\vbSharp.pdb

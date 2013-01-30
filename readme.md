@@ -10,7 +10,7 @@ Example: .forEach extension to Data.DataTable
 
         Dim ret As New StringBuilder
         With ret
-            read.sql("select * from manufacturer") _
+            read.sql("select title from manufacturer") _
                 .forEach(Sub(r As Data.DataRow, i As Integer)   
                              .Append(__(r("title")) & html.br())
                          End Sub,
@@ -27,6 +27,23 @@ Output with records:
 Output with no records:
 	
 	There was no data!
+
+Example: .template extension to Data.DataTable
+---------------------
+	dim ret as string = _
+		read.sql("select title from manufacturer") _
+			.template("${title}<br />"))
+	rw(ret)
+
+    
+Output with records:
+	
+	CompanyA<br />
+	CompanyC<br />
+	CompanyB<br />
+
+
+
 
 Example: CSV as Data.Datatable
 ---------------------    

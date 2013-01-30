@@ -17,15 +17,20 @@ Partial Public Class read
                 .Add("Filename")
                 .Add("FileExtension")
                 .Add("FileSize")
-                .Add("LastAccess")
+                .Add("Attributes")
                 .Add("CreationTime")
+                .Add("CreationTimeUtc")
+                .Add("LastWriteTime")
+                .Add("LastWriteTimeUtc")
+                .Add("LastAccessTime")
+                .Add("LastAccessTimeUtc")
             End With
 
             Dim row As DataRow
             For Each f In files
                 row = recs.NewRow()
                 row.ItemArray =
-                  {f.Name, f.Extension, f.Length & " bytes", f.LastAccessTime, f.CreationTime}
+                  {f.Name, f.Extension, f.Length & " bytes", f.Attributes, f.CreationTime, f.CreationTimeUtc, f.LastWriteTime, f.LastWriteTimeUtc, f.LastAccessTime, f.LastAccessTimeUtc}
                 recs.Rows.Add(row)
             Next
             Return recs
