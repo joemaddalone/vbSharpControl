@@ -5,6 +5,9 @@ Imports System.Web.UI.Control
 Imports System.Text
 Imports System.IO
 Imports System.Web.UI.HtmlControls
+Imports System.Data
+Imports System.Data.DataSetExtensions
+
 ''' <summary>
 ''' Extends data.datatable
 ''' </summary>
@@ -358,6 +361,7 @@ Public Module Extensions_DataTable
                      End Sub)
         Return ret
     End Function
+
 
     <Extension()> _
     Function [dim](ByVal recs As Data.DataTable,

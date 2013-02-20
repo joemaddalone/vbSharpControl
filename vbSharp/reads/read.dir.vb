@@ -18,12 +18,12 @@ Partial Public Class read
                 .Add("FileExtension")
                 .Add("FileSize")
                 .Add("Attributes")
-                .Add("CreationTime")
-                .Add("CreationTimeUtc")
-                .Add("LastWriteTime")
-                .Add("LastWriteTimeUtc")
-                .Add("LastAccessTime")
-                .Add("LastAccessTimeUtc")
+                .Add("CreationTime", System.Type.GetType("System.DateTime"))
+                .Add("CreationTimeUtc", System.Type.GetType("System.DateTime"))
+                .Add("LastWriteTime", System.Type.GetType("System.DateTime"))
+                .Add("LastWriteTimeUtc", System.Type.GetType("System.DateTime"))
+                .Add("LastAccessTime", System.Type.GetType("System.DateTime"))
+                .Add("LastAccessTimeUtc", System.Type.GetType("System.DateTime"))
             End With
 
             Dim row As DataRow
