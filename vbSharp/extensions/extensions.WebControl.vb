@@ -35,7 +35,16 @@ Public Module Extensions_WebControl
   <Extension()> _
   Public Sub AppendControl(ByVal x As Control, ByVal y As Control)
     x.Controls.Add(y)
-  End Sub
+    End Sub
+
+    <Extension()> _
+    Public Sub AppendControls(ByVal x As Control, ByVal path As String, ByVal y As String())
+        For Each c In y
+            x.Controls.Add((CType(HttpContext.Current.Handler, Page)).LoadControl(path & c & ".ascx"))
+        Next
+    End Sub
+
+
   ''' <summary>
   ''' Adds literal and literal text to control
   ''' </summary>
