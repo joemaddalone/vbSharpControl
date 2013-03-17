@@ -125,6 +125,7 @@
     <Compile Include="reads\read.txt.vb" />
     <Compile Include="reads\read.xml.vb" />
     <Compile Include="webForm\webform.vb" />
+    <Compile Include="Zen\zen.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
