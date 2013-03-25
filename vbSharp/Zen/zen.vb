@@ -69,15 +69,21 @@ Public Class zen
         Me.output = ret.ToString()
     End Sub
 
-    Function checkForPair(v As String, y As Char()) As String
-        Dim pos1 As Integer = v.IndexOf(y(0))
+    Function checkForPair(x As String, y As Char()) As String
+        Dim pos1 As Integer = x.IndexOf(y(0))
         Dim pos2 As Integer
         If pos1 > -1 Then
-            pos2 = v.Substring(pos1).IndexOf(y(1))
-            Return v.Substring(pos1 + 1, pos2 - 1)
+            pos2 = x.Substring(pos1).IndexOf(y(1))
+            If y(0) = "{" AndAlso x.Substring(pos1 - 1, 1) = "$" Then
+                Return x.Substring(pos1 - 1, pos2 + 2)
+            Else
+                Return x.Substring(pos1 + 1, pos2 - 1)
+            End If
         Else
             Return ""
         End If
+
+
     End Function
 
 
