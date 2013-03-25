@@ -209,6 +209,7 @@ Public Module Extensions_DataTable
             recs.forEach(Sub(r As Data.DataRow, x As Integer)
                              tmp = pattern
                              r.forEach(Sub(dat As String, i As Integer)
+                                           tmp = tmp.Replace("__" & recs.Columns(i).ColumnName & "__", dat)
                                            tmp = tmp.Replace("${" & recs.Columns(i).ColumnName & "}", dat)
                                        End Sub, callback:=Sub() ret.Append(tmp))
                          End Sub)
