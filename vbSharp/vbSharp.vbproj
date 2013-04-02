@@ -124,6 +124,7 @@
     <Compile Include="reads\read.sql.vb" />
     <Compile Include="reads\read.txt.vb" />
     <Compile Include="reads\read.xml.vb" />
+    <Compile Include="Unsorted\dObject.vb" />
     <Compile Include="webForm\webform.vb" />
     <Compile Include="Zen\zen.vb" />
   </ItemGroup>

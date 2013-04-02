@@ -20,7 +20,6 @@ Public Class zen
         'el,class,id,attr,inner,connector
         Dim items As String() = Regex.Split(x, "(>|\+)")
         For i As Integer = 0 To items.Length - 1 Step 2
-            'Console.WriteLine(Regex.Split(items(i), "(\$\{|\.|\#|\{|\[)")(0))
             Dim item As String = items(i)
             Dim attributes As String = checkForPair(item, New Char() {"["c, "]"c})
             If attributes <> "" Then item = item.Replace(attributes, "")
