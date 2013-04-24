@@ -762,11 +762,12 @@ vbSharp
 	<param name="last"></param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:vbSharp.Extensions_DataTable.toTable(System.Data.DataTable,System.String,System.String[])">
+</member><member name="M:vbSharp.Extensions_DataTable.toTable(System.Data.DataTable,System.String,System.String,System.String,System.String[])">
 	<summary>
 	</summary>
 	<param name="recs"></param>
 	<param name="cssclass"></param>
+	<param name="caption"></param>
 	<param name="fields"></param>
 	<returns></returns>
 	<remarks></remarks>

@@ -20,12 +20,12 @@ Public Class fs
     Public Shared move As Action(Of String, String) = Sub(src, dest) IO.File.Move(src, dest)
     Public Shared copy As Action(Of String, String) = Sub(src, dest) IO.File.Copy(src, dest)
     Public Shared rename As Action(Of String, String) = Sub(src, dest) IO.File.Move(src, dest)
+    Public Shared write As Action(Of String, String) = Sub(path, content) IO.File.WriteAllText(path, content)
+    Public Shared mkdir As Action(Of String) = Sub(path) IO.Directory.CreateDirectory(path)
 
-
-
-  Shared Sub create(path As String, content As String)
-    fs.delete(path)
-    Using x As New System.IO.StreamWriter(path, False) : x.WriteLine(content) : End Using
-  End Sub
+    Shared Sub create(path As String, content As String)
+        fs.delete(path)
+        Using x As New System.IO.StreamWriter(path, False) : x.WriteLine(content) : End Using
+    End Sub
 
 End Class

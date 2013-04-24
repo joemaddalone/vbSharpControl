@@ -12,7 +12,7 @@ Partial Public Class read
         Dim files As IO.FileInfo() =
           If(fileExt = "", folder.GetFiles("*"), folder.GetFiles("*." & fileExt))
         Dim f As IO.FileInfo
-        Using recs As New DataTable()
+        Using recs As New Data.DataTable()
             With recs.Columns
                 .Add("Filename")
                 .Add("FileExtension")
@@ -26,11 +26,28 @@ Partial Public Class read
                 .Add("LastAccessTimeUtc", System.Type.GetType("System.DateTime"))
             End With
 
-            Dim row As DataRow
+            Dim row As Data.DataRow
             For Each f In files
                 row = recs.NewRow()
                 row.ItemArray =
                   {f.Name, f.Extension, f.Length & " bytes", f.Attributes, f.CreationTime, f.CreationTimeUtc, f.LastWriteTime, f.LastWriteTimeUtc, f.LastAccessTime, f.LastAccessTimeUtc}
+                recs.Rows.Add(row)
+            Next
+            Return recs
+        End Using
+    End Function
+
+
+    Shared Function dirs(ByVal path As String) As Data.DataTable
+        Dim folder As String() = IO.Directory.GetDirectories(path)
+        Using recs As New Data.DataTable()
+            With recs.Columns
+                .Add("dirName")
+            End With
+            Dim row As Data.DataRow
+            For Each f In folder
+                row = recs.NewRow()
+                row.ItemArray = {f}
                 recs.Rows.Add(row)
             Next
             Return recs
@@ -44,7 +61,7 @@ Partial Public Class read
         Dim files As IO.FileInfo() =
           folder.GetFiles(find)
         Dim f As IO.FileInfo
-        Using recs As New DataTable()
+        Using recs As New Data.DataTable()
             With recs.Columns
                 .Add("Filename")
                 .Add("FileExtension")
@@ -52,7 +69,7 @@ Partial Public Class read
                 .Add("LastAccess")
                 .Add("CreationTime")
             End With
-            Dim row As DataRow
+            Dim row As Data.DataRow
             For Each f In files
                 row = recs.NewRow()
                 row.ItemArray =

@@ -6,7 +6,7 @@ Imports System.Text
 Imports System.IO
 Imports System.Web.UI.HtmlControls
 Imports System.Data
-Imports System.Data.DataSetExtensions
+
 
 ''' <summary>
 ''' Extends data.datatable
@@ -150,17 +150,23 @@ Public Module Extensions_DataTable
     ''' </summary>
     ''' <param name="recs"></param>
     ''' <param name="cssclass"></param>
+    ''' <param name="caption"></param>
     ''' <param name="fields"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Extension()> _
     Function toTable(ByVal recs As Data.DataTable,
                      Optional ByVal cssclass As String = "",
+                     Optional ByVal id As String = "",
+                     Optional ByVal caption As String = "",
                      Optional ByVal fields As String() = Nothing) As String
         Dim ret As New StringBuilder
         If Not recs Is Nothing AndAlso hasrecs(recs) Then
             With ret
-                .Append(If(cssclass = "", "<table>", "<table class=""" & cssclass & """>"))
+                .Append("<table class=""" & cssclass & """ id=""" & id & """>")
+                If caption <> "" Then
+                    .Append(html.caption(caption))
+                End If
                 .Append("<thead>")
                 .Append("<tr>")
                 If fields Is Nothing Then
