@@ -788,14 +788,6 @@ vbSharp
 	<param name="id"></param>
 	<returns>String</returns>
 	<remarks></remarks>
-</member><member name="M:vbSharp.Extensions_DataTable.toJSON(System.Data.DataTable,System.String)">
-	<summary>
- converts datatable to JSON
- </summary>
-	<param name="recs"></param>
-	<param name="id"></param>
-	<returns></returns>
-	<remarks></remarks>
 </member><member name="T:vbSharp.Extensions_DataTable">
 	<summary>
  Extends data.datatable

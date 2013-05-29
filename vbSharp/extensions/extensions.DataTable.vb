@@ -7,7 +7,6 @@ Imports System.IO
 Imports System.Web.UI.HtmlControls
 Imports System.Data
 
-
 ''' <summary>
 ''' Extends data.datatable
 ''' </summary>
@@ -294,48 +293,59 @@ Public Module Extensions_DataTable
         Return ret.ToString
     End Function
 
-    ''' <summary>
-    ''' converts datatable to JSON
-    ''' </summary>
-    ''' <param name="recs"></param>
-    ''' <param name="id"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    
     <Extension()> _
-    Public Function toJSON(ByVal recs As Data.DataTable, ByVal id As String) As String
+    Public Function toJSON(ByVal recs As Data.DataTable) As String
         Dim ret As New StringBuilder
-        Dim rows As Integer = recs.Rows.Count - 1
-        Dim cols As Integer = recs.Columns.Count - 1
-        Dim colString As New List(Of String)
-
-        For i As Integer = 0 To recs.Columns.Count - 1
-            colString.Add(recs.Columns(i).ColumnName)
-        Next
-
-        Dim retString As String = ""
-        For i As Integer = 0 To recs.Columns.Count - 1
-            retString &= colString.Item(i) & ":arguments[" & i & "]" & ","
-        Next
-        retString = retString.TrimEnd(","c)
+        Dim row As New StringBuilder
         With ret
-            .Append("var " & id & ";")
-            .Append("var " & id & "RowDat = function(" & Join(colString.ToArray(), ",") & "){")
-            .Append("return {" & retString & "}")
-            .Append("};")
-            .Append("var " & id & " = {rows:[")
-            recs.forEach(Sub(row As Data.DataRow, i As Integer)
-                             .Append("new " & id & "RowDat(")
-                             row.forEach(Sub(dat As String, x As Integer)
-                                             .Append("""" & PG.Server.HtmlEncode(dat.Replace(Chr(10), " ").Replace(Chr(13), " ").Replace(Chr(10) & Chr(13), " ")) & """")
-                                             If x < cols Then .Append(",")
-                                         End Sub)
-                             .Append(If(i < rows, "),", ")"))
+            recs.forEach(Sub(r As Data.DataRow, i As Integer)
+                             For x As Integer = 0 To recs.Columns.Count - 1
+                                 Dim c As Data.DataColumn = recs.Columns(x)
+                                 Dim col As System.Type = c.DataType
+                                 row.Append("""" & c.ColumnName & """:")
+                                 If col.ToString().ToLower().IndexOf("int") > -1 Then
+                                     row.Append(__(r(c.ColumnName)) & ",")
+                                 Else
+                                     row.Append("""" & System.Web.HttpUtility.JavaScriptStringEncode(__(r(c.ColumnName))) & """,")
+                                 End If
+                             Next
+                             .Append("{" & row.ToString().TrimEnd(","c) & "},")
+                             row.Clear()
                          End Sub)
-            .Append("]};")
         End With
-        Return ret.ToString
+        Return "[" & ret.ToString.TrimEnd(","c) & "]"
     End Function
-   
+
+
+    <Extension()> _
+    Public Function toXML(ByVal recs As Data.DataTable) As String
+        Dim ret As New StringBuilder
+        Dim row As New StringBuilder
+        With ret
+            recs.forEach(Sub(r As Data.DataRow, i As Integer)
+                             For x As Integer = 0 To recs.Columns.Count - 1
+
+                                 Dim c As Data.DataColumn = recs.Columns(x)
+                                 Dim col As System.Type = c.DataType
+                                 row.Append("<" & c.ColumnName & ">")
+                                 If col.ToString().ToLower().IndexOf("int") > -1 Then
+                                     row.Append(__(r(c.ColumnName)))
+                                 Else
+                                     row.Append(System.Web.HttpUtility.JavaScriptStringEncode(__(r(c.ColumnName))))
+                                 End If
+                                 row.Append("</" & c.ColumnName & ">")
+                             Next
+                             .Append("<row>" & row.ToString().TrimEnd(","c) & "</row>")
+                             row.Clear()
+                         End Sub)
+        End With
+        Return "<?xml version=""1.0"" ?><data>" & ret.ToString & "</data>"
+    End Function
+
+
+
+
     <Extension()> _
     Public Function toCSV(ByVal recs As Data.DataTable) As String
         Dim ret As New StringBuilder

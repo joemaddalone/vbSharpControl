@@ -48,4 +48,64 @@ Public Class edit
             Return ret.ToString
         End If
     End Function
+
+
+    Shared Sub RankChange(ByVal direction As Integer, ByVal tbl As String, ByVal ID As Integer, Optional strWhere As String = "", Optional rankColumn As String = "rank")
+        Dim p As String = "id"
+        Dim pid As String = ""
+        Dim SQL As String = _
+            "select ROW_NUMBER() over (order by " & rankColumn & ") row," & _
+            "id,ISNULL(" & rankColumn & ",0) " & rankColumn & _
+            " from " & tbl & " " & strWhere
+        Dim x As Integer
+        Dim recs As Data.DataTable = read.sql(SQL)
+        Dim pos As Integer
+        'first we need to make sure we have it in the proper order, and one that makes sense.
+        'regardless of click happy users.
+
+        For x = 0 To recs.Rows.Count - 1
+            Execute("update " & tbl & " set " & rankcolumn & " = " & recs.Rows(x)("row").ToString & " WHERE ID=" & recs.Rows(x)("id").ToString)
+            If recs.Rows(x)("id").ToString = ID.ToString() Then
+                pos = x
+            End If
+        Next
+
+        If pos = (recs.Rows.Count - 1) AndAlso direction = 1 Then
+            'do nothing
+            'it is already last... the user is just an asshole
+            Exit Sub
+        End If
+
+
+        If pos = 0 AndAlso direction = -1 Then
+            'do nothing
+            'it is already first... the user is just an asshole
+            Exit Sub
+        End If
+
+
+        If hasrecs(recs) Then
+            'row = current rank when selected
+            Select Case direction
+                Case Is < 0
+                    'we are ranking one less
+                    'since it is 0 based the pos var already equals one less than our current rank
+                    'First: move the rank below it +1
+                    Execute("update " & tbl & " set " & rankcolumn & " = " & rankcolumn & "+1 WHERE " & rankcolumn & " = " & pos)
+                    'now move ours into place
+                    Execute("update " & tbl & " set " & rankcolumn & " = " & pos & " WHERE ID = " & ID)
+                Case 1
+                    'We are ranking it one more
+                    'since it is 0 based the pos var already equals one less than our current rank
+                    'First: move the rank below it -1
+                    Execute("update " & tbl & " set " & rankcolumn & " = " & rankcolumn & "-1 WHERE " & rankcolumn & " = " & pos + 2)
+                    'now move ours into place
+                    Execute("update " & tbl & " set " & rankcolumn & " = " & pos + 2 & " WHERE ID = " & ID)
+            End Select
+        End If
+
+
+
+    End Sub
+
 End Class
