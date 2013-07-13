@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="calculations\conversion.vb" />
     <Compile Include="calculations\math.vb" />
+    <Compile Include="connections\odbc.vb" />
     <Compile Include="executes\oledb.vb" />
     <Compile Include="executes\sql.vb" />
     <Compile Include="extensions\extensions.Array.vb" />
@@ -79,6 +80,8 @@
     <Compile Include="javascript\javascript.vb" />
     <Compile Include="javascript\jsmin.vb" />
     <Compile Include="javascript\json.vb" />
+    <Compile Include="reads\read.mysql.vb" />
+    <Compile Include="reads\read.sql.vb" />
     <Compile Include="Unsorted\listSorter.vb" />
     <Compile Include="reads\read.url.vb" />
     <Compile Include="swfobject\swf.vb" />
@@ -121,7 +124,6 @@
     <Compile Include="reads\read.csv.vb" />
     <Compile Include="reads\read.dir.vb" />
     <Compile Include="reads\read.excel.vb" />
-    <Compile Include="reads\read.sql.vb" />
     <Compile Include="reads\read.txt.vb" />
     <Compile Include="reads\read.xml.vb" />
     <Compile Include="Unsorted\dObject.vb" />

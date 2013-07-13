@@ -20,18 +20,30 @@ Public Module common
   End Function
 
 
-  Public PathOf As Func(Of String, String) = Function(s) PhysicalPath() & s
-  Public PhysicalPath As Func(Of String) = Function() PG.Request.PhysicalApplicationPath
-  Public AP As Func(Of String, String) =
-    Function(s) System.Configuration.ConfigurationManager.AppSettings(s)
-  Public Nav As Action(Of String) = Sub(url) PG.Response.Redirect(url)
-  Public NavBack As Action = Sub() Nav(PG.Request.UrlReferrer.ToString)
-  Public rW As Action(Of String) = Sub(s) PG.Response.Write(s)
-  Public rCook As Func(Of String, String) = Function(s) PG.Response.Cookies(s).Value
-  Public rSession As Action(Of String, String) = Sub(s, s2) PG.Session(s) = s2
-  Public rqQ As Func(Of String, String) = Function(s) PG.Request.QueryString(s)
-  Public rqF As Func(Of String, String) = Function(s) PG.Request.Form(s)
-  Public rqCook As Func(Of String, String) = Function(s) PG.Request.Cookies(s).Value
+    Public PathOf As Func(Of String, String) = Function(s) PhysicalPath() & s
+    Public PhysicalPath As Func(Of String) = Function() PG.Request.PhysicalApplicationPath
+    Public AP As Func(Of String, String) =
+      Function(s) System.Configuration.ConfigurationManager.AppSettings(s)
+    Public Nav As Action(Of String) = Sub(url) PG.Response.Redirect(url)
+    Public NavBack As Action = Sub() Nav(PG.Request.UrlReferrer.ToString)
+    Public rW As Action(Of String) = Sub(s) PG.Response.Write(s)
+    Public rCook As Action(Of String, String) =
+        Sub(name, val)
+            Dim cookie As HttpCookie = PG.Request.Cookies.Get(name)
+            If (cookie Is Nothing) Then
+                cookie = New HttpCookie(name)
+            Else
+                PG.Response.Cookies.Remove(name)
+                cookie = New HttpCookie(name)
+            End If
+            cookie.Value = val
+            PG.Response.Cookies.Add(cookie)
+        End Sub
+    Public rSession As Action(Of String, String) = Sub(s, s2) PG.Session(s) = s2
+    Public rqQ As Func(Of String, String) = Function(s) PG.Request.QueryString(s)
+    Public rqF As Func(Of String, String) = Function(s) PG.Request.Form(s)
+    Public rqCook As Func(Of String, String) = Function(s) PG.Request.Cookies(s).Value
+
   Public Function timestamp() As String
     Return Now.ToString.mReplace({":", "/", "-", " ", "."})
   End Function

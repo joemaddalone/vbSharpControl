@@ -43,6 +43,23 @@ Output with records:
 	CompanyB<br />
 
 
+Example: .template extension with Zen coding
+---------------------
+    dim ret as string = _
+        read.sql("select title from manufacturer") _
+            .template(New zen("tr>td${title}").output,"<table>","</table>"))
+    rw(ret)
+
+    
+Output with records:
+    
+    <table>
+    <tr><td>CompanyA</td></tr>
+    <tr><td>CompanyB</td></tr>
+    <tr><td>CompanyC</td></tr>
+    </table>
+
+
 
 
 Example: CSV as Data.Datatable
@@ -60,7 +77,7 @@ Example: Directory as Data.Datatable
 Example: Convert Data.Datatable to various formats
 ---------------------    
 
-    (DataTable).toJSON("id-for-json")
+    (DataTable).toJSON()
     (DataTable).toJS("id-for-js-array")
     (DataTable).toCSV()
     (DataTable).toTable()

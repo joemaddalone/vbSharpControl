@@ -6,7 +6,19 @@ vbSharp
 </name>
 </assembly>
 <members>
-<member name="M:vbSharp.Extensions_Array.slice``1(``0[],System.Int32,System.Int32)">
+<member name="M:vbSharp.read.mysql(System.String,System.Boolean)">
+	<summary>
+ Returns Datatable from MS-SQL Server based on specified T-SQL query.
+ </summary>
+	<param name="sqlString">The SQL query.</param>
+	<returns>Datatable</returns>
+</member><member name="M:vbSharp.read.sql(System.String,System.Boolean)">
+	<summary>
+ Returns Datatable from MS-SQL Server based on specified T-SQL query.
+ </summary>
+	<param name="sqlString">The SQL query.</param>
+	<returns>Datatable</returns>
+</member><member name="M:vbSharp.Extensions_Array.slice``1(``0[],System.Int32,System.Int32)">
 	<summary>
  A lot of cheating here applying List functionality to old school arrays
  </summary>
@@ -650,12 +662,6 @@ vbSharp
 	<param name="ColumnName"></param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:vbSharp.read.sql(System.String,System.Boolean)">
-	<summary>
- Returns Datatable from MS-SQL Server based on specified T-SQL query.
- </summary>
-	<param name="sqlString">The SQL query.</param>
-	<returns>Datatable</returns>
 </member><member name="T:vbSharp.Utility.SortOrder">
 	<summary>
  Sort order enumeration
