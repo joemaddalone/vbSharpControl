@@ -6,18 +6,13 @@ vbSharp
 </name>
 </assembly>
 <members>
-<member name="M:vbSharp.read.mysql(System.String,System.Boolean)">
+<member name="M:vbSharp.executes.mysql(System.String,System.Boolean)">
 	<summary>
- Returns Datatable from MS-SQL Server based on specified T-SQL query.
- </summary>
-	<param name="sqlString">The SQL query.</param>
-	<returns>Datatable</returns>
-</member><member name="M:vbSharp.read.sql(System.String,System.Boolean)">
-	<summary>
- Returns Datatable from MS-SQL Server based on specified T-SQL query.
- </summary>
-	<param name="sqlString">The SQL query.</param>
-	<returns>Datatable</returns>
+	</summary>
+	<param name="strSQL"></param>
+	<param name="ExecuteScalar"></param>
+	<returns></returns>
+	<remarks></remarks>
 </member><member name="M:vbSharp.Extensions_Array.slice``1(``0[],System.Int32,System.Int32)">
 	<summary>
  A lot of cheating here applying List functionality to old school arrays
@@ -131,6 +126,12 @@ vbSharp
 	<param name="id"></param>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="M:vbSharp.read.mysql(System.String,System.Boolean)">
+	<summary>
+ Returns Datatable from MS-SQL Server based on specified T-SQL query.
+ </summary>
+	<param name="sqlString">The SQL query.</param>
+	<returns>Datatable</returns>
 </member><member name="M:vbSharp.read.csv(System.String,System.Boolean)">
 	<summary>
  Returns CSV as Datatable
@@ -616,6 +617,12 @@ vbSharp
  </summary>
 	<param name="path">The directory to read.</param>
 	<param name="fileExt">Limits results to specified file extension</param>
+	<returns>Datatable</returns>
+</member><member name="M:vbSharp.read.sql(System.String,System.Boolean)">
+	<summary>
+ Returns Datatable from MS-SQL Server based on specified T-SQL query.
+ </summary>
+	<param name="sqlString">The SQL query.</param>
 	<returns>Datatable</returns>
 </member><member name="M:vbSharp.dataObj.__(System.Object)">
 	<summary>

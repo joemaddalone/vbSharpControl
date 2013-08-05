@@ -72,6 +72,7 @@
     <Compile Include="calculations\conversion.vb" />
     <Compile Include="calculations\math.vb" />
     <Compile Include="connections\odbc.vb" />
+    <Compile Include="executes\mysql.vb" />
     <Compile Include="executes\oledb.vb" />
     <Compile Include="executes\sql.vb" />
     <Compile Include="extensions\extensions.Array.vb" />

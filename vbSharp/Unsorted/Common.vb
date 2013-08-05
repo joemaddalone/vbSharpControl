@@ -42,9 +42,22 @@ Public Module common
     Public rSession As Action(Of String, String) = Sub(s, s2) PG.Session(s) = s2
     Public rqQ As Func(Of String, String) = Function(s) PG.Request.QueryString(s)
     Public rqF As Func(Of String, String) = Function(s) PG.Request.Form(s)
-    Public rqCook As Func(Of String, String) = Function(s) PG.Request.Cookies(s).Value
 
-  Public Function timestamp() As String
+    Public Function rqCook(name As String) As String
+        Dim cookie As HttpCookie = PG.Request.Cookies.Get(name)
+        If cookie Is Nothing Then
+            Return ""
+        Else
+            Return PG.Request.Cookies(name).Value
+        End If
+
+    End Function
+
+
+
+
+
+    Public Function timestamp() As String
     Return Now.ToString.mReplace({":", "/", "-", " ", "."})
   End Function
   
